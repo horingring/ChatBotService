@@ -1,12 +1,15 @@
-# FullStack
-Web Full Stack
-
+# Hybrid Application
+Web & App
 
 ## Development environment
-Intellij
+OS : Windows
+IDE : Intellij
 
 ## Tech Stack
 
-- React
+- React native
 - Spring Boot
-- AWS
+- AWS EC2 & S3
+- Block Chain
+- AI
+
