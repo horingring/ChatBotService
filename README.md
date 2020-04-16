@@ -2,7 +2,7 @@
 Web & App
 
 ## Development environment
-OS : Windows
+OS : Windows <br>
 IDE : Intellij
 
 ## Tech Stack
