@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../img/YRB_logo.png';
 import {Button, Nav, Navbar, Form} from 'react-bootstrap';
+import Login from '../Pages/Login'
 
 const Menu = () => {
+    const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <div>
@@ -15,11 +17,15 @@ const Menu = () => {
                     <Nav.Link style={{margin: "20px" ,fontSize: "30px"}} href="/MemberIntro">Member Introduction</Nav.Link>
                 </Nav>
                 <Form inline>
-                    <Button variant="outline-info" style={{margin: "10px"}}><Link to="/Login">로그인</Link></Button>
+                    <Button variant="outline-info" onClick={() => setModalShow(true)} style={{margin: "10px"}}><Link to="/Login">로그인</Link></Button>
                     <Button variant="outline-info">로그아웃</Button>
                 </Form>
             </Navbar>
 
+            <Login
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
             <hr/>
         </div>
     );

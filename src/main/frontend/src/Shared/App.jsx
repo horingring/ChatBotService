@@ -13,10 +13,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                {/*Menubar*/}
+                {/*Menu bar*/}
                 <Menu/>
 
-                {/*bodyside*/}
+                {/*Body side*/}
                 <Route exact path="/" component={Home}/>
                 <Route path="/Login" component={Login}/>
                 <Route path="/MyPage" component={MyPage}/>
@@ -24,13 +24,12 @@ class App extends Component {
                 <Route path="/ChatBotDemo" component={ChatBotDemo}/>
                 <Route path="/MemberIntro" component={MemberIntro}/>
 
-                {/*FooterSide*/}
+                {/*Footer Side*/}
                 <Footer/>
             </div>
         );
     }
 }
-
 {/*<Switch>*/}
 {/*    <Route path="/about/:name" component={About}/>*/}
 {/*    <Route path="/about" component={About}/>*/}
