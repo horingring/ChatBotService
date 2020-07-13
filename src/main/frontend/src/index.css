@@ -7,7 +7,141 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+
+/* 편의상 정의 */
+/* 폭&높이 100% */
+.WH100pct{
+  width: 100%;
+  height: 100%;
+}
+
+/* 폭 100% */
+.W100pct{
+  width: 100%;
+}
+
+/* 높이 100% */
+.H100pct{
+  height: 100%;
+}
+
+
+/* 공통 */
+html, body, #root, #App{
+  width: 100%;
+  height: 100%;
+}
+
+#Header, #Content, #Footer{
+  width: 100%;
+}
+
+#Header{
+  height: 16%;
+  margin-bottom: 50px;
+}
+
+#Content{
+  height: 90%;
+}
+
+#Footer{
+  height: 10%;
+}
+
+.ContentTitle{
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #343a40;
+  padding-bottom: 10px;
+}
+
+/* 챗봇데모 */
+#ChatBotDemoPage{
+ width: 68%;
+ height: 100%;
+ margin: 0 auto;
+ display: flex;
+ flex-direction: column;
+}
+
+#ChatBotDemoMain{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#ChatBotChatting_Container{
+  width: 60%;
+  height: 100%;
+  margin-right: 30px;
+  box-sizing: border-box;
+}
+
+#ChatBotChattingBox{
+  width: 100%;
+  height: 80%;
+  background-color: #ffaa64;
+  border: 2px solid lightgray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-sizing: border-box;
+}
+#ChatBotInputBox_Container{
+  width: 100%;
+  height: 20%;
+  box-sizing: border-box;
+  border-left: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+#ChatBotInput_Box{
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+}
+
+#InputTextarea{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#InputTextarea:focus{
+  outline: none;
+}
+
+#InputTextarea:active{
+  border:none
+}
+
+#ChatBotInput_Button{
+  width: 20%;
+  height: 40%;
+  background-color: #ffd460;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ChatBotExtraBox_Container{
+  width: 40%;
+  height: 100%;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  box-sizing: border-box;
 }

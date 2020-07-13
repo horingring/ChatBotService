@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div>
+        <div id="Footer">
             <hr/>
             <h1>This is footer side</h1>
             <ul>
