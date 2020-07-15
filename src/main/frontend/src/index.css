@@ -47,7 +47,7 @@ html, body, #root, #App{
 }
 
 #Content{
-  height: 90%;
+  height: 95%;
 }
 
 #Footer{
@@ -80,28 +80,34 @@ html, body, #root, #App{
 #ChatBotChatting_Container{
   width: 60%;
   height: 100%;
-  margin-right: 30px;
   box-sizing: border-box;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 #ChatBotChattingBox{
   width: 100%;
   height: 80%;
   background-color: #ffaa64;
-  border: 2px solid lightgray;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border: 5px solid lightgray;
+  border-radius: 15px;
   box-sizing: border-box;
+  margin-bottom: 10px;
 }
 #ChatBotInputBox_Container{
   width: 100%;
   height: 20%;
   box-sizing: border-box;
-  border-left: 2px solid lightgray;
-  border-right: 2px solid lightgray;
-  border-bottom: 2px solid lightgray;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border: 5px solid lightgray;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+#InputForm{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -137,11 +143,17 @@ html, body, #root, #App{
   align-items: center;
   justify-content: center;
 }
+#ChatBotInput_Button:hover{
+  cursor: pointer;
+}
+#ChatBotInput_Button:active{
+  background-color: #dfb952;
+}
 
 #ChatBotExtraBox_Container{
   width: 40%;
   height: 100%;
-  border: 2px solid lightgray;
-  border-radius: 10px;
+  border: 3px solid lightgray;
+  border-radius: 15px;
   box-sizing: border-box;
 }
