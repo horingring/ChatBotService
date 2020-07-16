@@ -3,6 +3,24 @@ import React from 'react';
 const ChatBotChatting = () => {
     return (
         <div id="ChatBotChatting_Container">
+            {/* test용 주석 */}
+            <div id="forTest1">ss</div>
+            <div id="forTest2">ss</div>
+
+            <div id="forTest3">ss</div>
+
+            <div id="forTest4">ss</div>
+
+            <div id="forTest5">ss</div>
+
+            <div id="forTest6">ss</div>
+            {/* test용 주석(branch) */}
+            <div id="test1">aa</div>
+            <div id="test2">aa</div>
+            <div id="test3">aa</div>
+            <div id="test4">aa</div>
+
+
             <div id="ChatBotChattingBox"></div>     {/* 챗봇채팅창 */}
             <div id="ChatBotInputBox_Container">    {/* 챗봇입력 컨테이너 */}
                 <form id="InputForm"                //form
