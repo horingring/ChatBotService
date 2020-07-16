@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div id="Footer">
             <hr/>
-            <h1>This is footer side</h1>
+            <p>This is footer side</p>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/ChatBotDemo">ChatBotDemo</Link></li>

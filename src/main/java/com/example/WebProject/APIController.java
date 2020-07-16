@@ -8,7 +8,7 @@ import java.util.HashMap;
 @RestController
 public class APIController {
 
-    @GetMapping("/hello")
+    @GetMapping("/api/hello")
     public HashMap hello(){
         HashMap result = new HashMap();
         result.put("message","안녕하세요");

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
 
 const Login = (props) => {
@@ -8,20 +8,19 @@ const Login = (props) => {
                 {...props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
+                centered>
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
+                        로그인
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email"/>
+                            <Form.Label>ID</Form.Label>
+                            <Form.Control type="id" placeholder="Enter ID"/>
                             <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                                We'll never share your ID with anyone else.
                             </Form.Text>
                         </Form.Group>
 
@@ -32,13 +31,13 @@ const Login = (props) => {
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out"/>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                    <Button onClick={props.onHide}>닫기</Button>
                 </Modal.Footer>
             </Modal>
         </div>
