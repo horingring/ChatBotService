@@ -8,7 +8,7 @@ const Menu = () => {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
-        <div>
+        <div id="Header">
             <Navbar bg="dark" variant="dark">
                 <Link to="/"><img className="Header_logo" style={{width: "50px", height: "50px"}} src={logo}
                                   alt="yrb 로고"/></Link>
@@ -26,7 +26,6 @@ const Menu = () => {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
-            <hr/>
         </div>
     );
 };

@@ -12,18 +12,20 @@ import MemberIntro from '../Pages/MemberIntro';
 class App extends Component {
     render() {
         return (
-            <div>
+            <div id="App">
                 {/*Menu bar*/}
                 <Menu/>
 
                 {/*Body side*/}
-                <Route exact path="/" component={Home}/>
-                <Route path="/Login" component={Login}/>
-                <Route path="/MyPage" component={MyPage}/>
-                <Route path="/ChatBotIntro" component={ChatBotIntro}/>
-                <Route path="/ChatBotDemo" component={ChatBotDemo}/>
-                <Route path="/MemberIntro" component={MemberIntro}/>
-
+                <div id="Content">
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/Login" component={Login}/>
+                    <Route path="/MyPage" component={MyPage}/>
+                    <Route path="/ChatBotIntro" component={ChatBotIntro}/>
+                    <Route path="/ChatBotDemo" component={ChatBotDemo}/>
+                    <Route path="/MemberIntro" component={MemberIntro}/>
+                </div>
+                
                 {/*Footer Side*/}
                 <Footer/>
             </div>
