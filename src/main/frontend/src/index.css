@@ -85,7 +85,7 @@ html, body, #root, #App{
   display: flex;
   flex-direction: column;
 }
-
+/* ChatBotChatting 전체 영역 */
 #ChatBotChattingBox{
   width: 100%;
   height: 80%;
@@ -94,7 +94,24 @@ html, body, #root, #App{
   border-radius: 15px;
   box-sizing: border-box;
   margin-bottom: 10px;
+  padding: 15px;
 }
+
+/* 챗봇 채팅창 영역 */
+.chatNextBox{
+  margin-bottom: 20px;
+}
+.chatBox{
+  display: inline-block;
+  background-color: #ffd460;
+  border-radius: 10px;
+  padding: 10px 10px;
+}
+.chatBox_right{
+  text-align: right;
+}
+
+/* 챗봇 입력 영역 */
 #ChatBotInputBox_Container{
   width: 100%;
   height: 20%;
@@ -142,6 +159,8 @@ html, body, #root, #App{
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
+  border: none;
 }
 #ChatBotInput_Button:hover{
   cursor: pointer;
@@ -149,6 +168,9 @@ html, body, #root, #App{
 #ChatBotInput_Button:active{
   background-color: #dfb952;
 }
+
+
+
 
 #ChatBotExtraBox_Container{
   width: 40%;
