@@ -9,9 +9,10 @@ class ChatBotDemo extends Component{
        this.state={
            userData : {m_idx:2, user:'guest'},
            chatList : [
-               {chatNum:1, m_idx:1, user:'챗봇', content:'안녕하세요! 궁금한 것을 물어보세요!'}
+               {chatNum:1, m_idx:1, user:'챗봇', content:'안녕하세요! 궁금한 것을 물어보세요!'},
+               {chatNum:2, m_idx:3, user:'지나가는사람', content:'나도껴줘 얘들아 관심좀 줘'}   //예시용으로 다른 유저 추가함. 조금 변경하면 채팅어플로 변형 가능
            ],   //<채팅순서, 회원고유번호, 회원닉네임, 내용>  으로 구성.
-           max_chatNum : 1
+           max_chatNum : 2  //예시용 유저 빼면 max_chatNum : 1  로 변경할 것.
         }
     }
 
@@ -24,6 +25,7 @@ class ChatBotDemo extends Component{
                 </h2>
                 <div id="ChatBotDemoMain">
                     <ChatBotChatting
+                        //0722, 경호, ChatBotChatting 컴포넌트에 props로 뿌려주는 데이터(채팅List, user의 session)
                         chatData={this.state.chatList}
                         userData={this.state.userData}
                         //0721, 경호, submit버튼 누를 시 state의 chatList에 채팅내용 추가해주는 이벤트.    
