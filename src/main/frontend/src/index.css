@@ -37,13 +37,17 @@ html, body, #root, #App{
   height: 100%;
 }
 
+.ReactRouterDom_Link:hover{
+  text-decoration: none;
+}
+
 #Header, #Content, #Footer{
   width: 100%;
 }
 
 #Header{
   height: 16%;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 #Content{
@@ -62,6 +66,33 @@ html, body, #root, #App{
 }
 
 /* 헤더 */
+.Header_Navbar{
+  height: 90%;
+  background-color: #343a40;
+}
+
+.Header_logo{
+  width: 50px;
+  height: 50px;
+  margin-right: 50px;
+}
+
+.Menu_Container{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.Menu{
+  height: 100%;
+  color: rgb(228, 224, 224);
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
+.Menu:hover{
+  color:white;
+}
+
 .Menu_ChatBotService{
   position: relative;
 }
@@ -99,7 +130,7 @@ html, body, #root, #App{
 
 /* 챗봇데모 */
 #ChatBotDemoPage{
- width: 68%;
+ width: 75%;
  height: 100%;
  margin: 0 auto;
  display: flex;
@@ -108,37 +139,64 @@ html, body, #root, #App{
 
 #ChatBotDemoMain{
   width: 100%;
-  height: 100%;
+  height: 600px;
   display: flex;
   flex-direction: row;
 }
 
 #ChatBotChatting_Container{
   width: 60%;
-  height: 100%;
+  height: 606px;
   box-sizing: border-box;
   margin-right: 30px;
   display: flex;
   flex-direction: column;
 }
+
 /* ChatBotChatting 전체 영역 */
+.ChatBotChattingBox_Wrapper{
+  width: 100%;
+  border: 3px solid lightgray;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+}
+
 #ChatBotChattingBox{
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 70%;
+  height: 490px;
   background-color: #ffaa64;
   border: 5px solid lightgray;
-  border-radius: 15px;
   box-sizing: border-box;
-  margin-bottom: 10px;
-  padding: 15px;
-  overflow-y: hidden;
+  padding: 15px 15px 0 15px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-/* #ChatBotChattingBox::-webkit-scrollbar{
-  
-} */
+  /* 0724금, 경호, div 내 scrollbar */
+#ChatBotChattingBox::-webkit-scrollbar{
+  width: 10px;
+}
+#ChatBotChattingBox::-webkit-scrollbar-track{
+  background-color: #ffaa64;
+}
+#ChatBotChattingBox::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #fa8f38;
+}
+#ChatBotChattingBox::-webkit-scrollbar-button:start:decrement{
+  width: 10px;
+  height: 10px;
+  background-color: #ffaa64;
+}
+#ChatBotChattingBox::-webkit-scrollbar-button:end:increment{
+  width: 10px;
+  height: 10px;
+  background-color: #ffaa64;
+}
+
 
 /* 챗봇 채팅창 영역 */
 .chatNextBox{
@@ -169,6 +227,7 @@ html, body, #root, #App{
   background-color: #ffd460;
   border-radius: 10px;
   padding: 10px 10px;
+  max-width: 300px;
 }
 .chatContent_right{
   text-align: right;
@@ -177,9 +236,9 @@ html, body, #root, #App{
 /* 챗봇 입력 영역 */
 #ChatBotInputBox_Container{
   width: 100%;
-  height: 20%;
+  height: 100px;
   box-sizing: border-box;
-  border: 5px solid lightgray;
+  border: 8px solid lightgray;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
@@ -237,8 +296,8 @@ html, body, #root, #App{
 
 #ChatBotExtraBox_Container{
   width: 40%;
-  height: 100%;
-  border: 3px solid lightgray;
+  height: 606px;
+  border: 8px solid lightgray;
   border-radius: 15px;
   box-sizing: border-box;
 }
