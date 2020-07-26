@@ -13,6 +13,6 @@ Chat bot webservice
 ## Architecture(Tech)
 
 
-## ERD
+## UML
 
 ## Demo Image
