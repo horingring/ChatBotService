@@ -101,13 +101,18 @@ html, body, #root, #App{
   color:white;
 }
 
-.Menu_ChatBotService{
+#Menu_ChatBotService{
   position: relative;
+  transition: all ease 2s 0s;
+}
+
+.dropDownMenu_Wrapper{
+  position: absolute;
+  top: 100%;
+  display: none;
 }
 
 .dropDownMenu{
-  position: absolute;
-  top: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -120,6 +125,7 @@ html, body, #root, #App{
   height: 200px;
   background-color: #343a40;
   padding-top: 10px;
+  transition: 1s;
 }
 .dropDown_div:hover{
   background-color: #222529;
