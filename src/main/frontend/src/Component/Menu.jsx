@@ -3,20 +3,21 @@ import {Link} from 'react-router-dom';
 import logo from '../img/YRB_logo.png';
 import {Button, Nav, Navbar, Form} from 'react-bootstrap';
 import Login from '../Pages/Login'
+import $ from 'jquery';
 
 const Menu = () => {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <div id="Header">
-            <Navbar className="Header_Navbar" style={{padding:"0 16px"}} variant="dark">
+            <Navbar className="Header_Navbar" style={{padding:"0 16px", display:"flex", justifyContent:"center"}} variant="dark">
                 <Link to="/">
                     <img className="Header_logo" style={{width: "50px", height: "50px"}} src={logo} alt="yrb 로고"/>
                 </Link>
                 <div className="Menu_Container">
                     <Link to="/ChatBotIntro" className="ReactRouterDom_Link" style={{margin:"0 30px"}}>
                         <div className="Menu_ChatBotService Menu">ChatBot Service
-                            {/* <ul className="dropDownMenu">
+                            <ul className="dropDownMenu">
                                 <li><Link to="/ChatBotIntro" style={{textDecoration:"none", color:"white"}}>
                                         <div className="dropDown_div">
                                             <div><img src={logo} alt="챗봇 인트로 로고"></img></div>
@@ -31,7 +32,7 @@ const Menu = () => {
                                         </div>      
                                     </Link>
                                 </li>
-                            </ul>     */}                        
+                            </ul>                            
                         </div>
                     </Link>
                     <Link to="/MemberIntro" className="ReactRouterDom_Link" style={{margin:"0 30px"}}>
