@@ -46,8 +46,15 @@ html, body, #root, #App{
 }
 
 #Header{
+  width: 100%;
   height: 16%;
   margin-bottom: 100px;
+}
+
+.Body{
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 #Content{
@@ -67,6 +74,7 @@ html, body, #root, #App{
 
 /* 헤더 */
 .Header_Navbar{
+  width: 100%;
   height: 90%;
   background-color: #343a40;
 }
@@ -99,7 +107,7 @@ html, body, #root, #App{
 
 .dropDownMenu{
   position: absolute;
-  top: 89px;
+  top: 100%;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -110,7 +118,7 @@ html, body, #root, #App{
 .dropDown_div{
   width: 200px;
   height: 200px;
-  background-color: #3d454d;
+  background-color: #343a40;
   padding-top: 10px;
 }
 .dropDown_div:hover{
@@ -130,7 +138,7 @@ html, body, #root, #App{
 
 /* 챗봇데모 */
 #ChatBotDemoPage{
- width: 75%;
+ width: 100%;
  height: 100%;
  margin: 0 auto;
  display: flex;
