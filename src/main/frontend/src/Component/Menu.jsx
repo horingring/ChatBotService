@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../img/YRB_logo.png';
 import {Button, Nav, Navbar, Form} from 'react-bootstrap';
-import Login from '../Pages/Login'
+import CreateMember from '../Pages/CreateMember'
 import $ from 'jquery';
 
 class Menu extends Component{
@@ -49,12 +49,14 @@ class Menu extends Component{
                             <div className="Menu_MemberIntro Menu">Member Introduction</div>
                         </Link>
                     </div>
+                    <Link to ="/CreateMember"><Button variant="outline-info">로그인</Button></Link>
+                    <Link to ="/MyPage"><Button variant="outline-info">나의 정보</Button></Link>
                     {/* <Form inline>
-                        <Button variant="outline-info" onClick={() => setModalShow(true)} style={{margin: "10px"}}><Link to="/Login">로그인</Link></Button>
+                        <Button variant="outline-info" onClick={() => setModalShow(true)} style={{margin: "10px"}}><Link to="/CreateMember">로그인</Link></Button>
                         <Link to ="/MyPage"><Button variant="outline-info">나의 정보</Button></Link>
                     </Form> */}
                 </Navbar>
-                {/* <Login
+                {/* <CreateMember
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                 /> */}
@@ -62,5 +64,4 @@ class Menu extends Component{
         );
     }
 }
-
 export default Menu;

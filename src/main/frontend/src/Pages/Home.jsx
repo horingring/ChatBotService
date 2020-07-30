@@ -3,25 +3,23 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
 class Home extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {message: ""}
     }
 
     componentDidMount() {
-        this.getApi();
+
     }
 
-    //API 가져오는 함수
-    getApi = () => {
-        axios.get("http://localhost:8080/api/hello").then(res => {
-            console.log(res);
-            this.setState({message: res.data.message})
-        }).catch(res => console.log(res))
-    }
+    // //API 가져오는 함수
+    // getApi = () => {
+    //     axios.get("http://localhost:8080/api/login").then(res => {
+    //         console.log(res);
+    //         this.setState({message: res.data.message})
+    //     }).catch(res => console.log(res))
+    // }
 
     render() {
         const settings = {
