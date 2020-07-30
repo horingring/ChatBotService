@@ -16,8 +16,8 @@ class App extends Component {
             <div id="App">
                 {/*Menu bar*/}
                 <Menu/>
+                {/*Body side*/}
                 <div className="Body">
-                    {/*Body side*/}
                     <Route exact path="/" component={Home}/>
                     <Route path="/Login" component={Login}/>
                     <Route path="/MyPage" component={MyPage}/>
