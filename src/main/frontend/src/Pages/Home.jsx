@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 class Home extends Component {
 
@@ -21,9 +24,20 @@ class Home extends Component {
     }
 
     render() {
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 1000,
+            slidesToShow: 1,
+            slidesToScroll: 1
+          };
         return (
-            <div> Main 페이지
-                <p>{this.state.message} </p>
+            <div id="HomePage">
+                <Slider {...settings}>
+                    <div className="testDiv1">1</div>
+                    <div className="testDiv2">2</div>
+                </Slider>
+                {/* <p>{this.state.message} </p> */}
             </div>
 
         )
