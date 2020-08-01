@@ -25,9 +25,7 @@ class App extends Component {
                 <Route path="/ChatBotDemo" component={ChatBotDemo}/>
                 <Route path="/MemberIntro" component={MemberIntro}/>
                 {/*Footer Side*/}
-                <div className="Footer">
-                    <Footer/>
-                </div>
+                <Footer/>
             </div>
 
         );

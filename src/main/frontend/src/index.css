@@ -37,6 +37,11 @@ body {
   align-items: center;
 }
 
+/* div 가로정렬 */
+.flexRow{
+  display: flex;
+  flex-direction: row;
+}
 
 /* 공통 */
 html, body, #root, #App{
@@ -52,7 +57,7 @@ html, body, #root, #App{
   text-decoration: none;
 }
 
-#Header, #Content, .Footer{
+#Header, #Content, #Footer{
   width: 100%;
 }
 
@@ -72,9 +77,12 @@ html, body, #root, #App{
   height: 95%;
 }
 
-.Footer{
+#Footer{
   height: 300px;
+  position: relative;
+  bottom: 0;
   background: #ccc;
+  padding: 5% 5%;
 }
 
 .ContentTitle{
@@ -504,4 +512,10 @@ html, body, #root, #App{
 #IntroImg_MemberIntro .xyCenter{
   position: relative;
   z-index: 1;
+}
+
+
+/* Footer */
+.FooterDiv{
+  width: 50%;
 }
