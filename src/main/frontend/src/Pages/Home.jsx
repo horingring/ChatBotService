@@ -3,6 +3,7 @@ import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import pizza from '../img/pizza.jpg';
 class Home extends Component {
 
     constructor(props) {
@@ -27,13 +28,21 @@ class Home extends Component {
             infinite: true,
             speed: 1000,
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4000
           };
         return (
             <div id="HomePage">
                 <Slider {...settings}>
-                    <div className="testDiv1">1</div>
-                    <div className="testDiv2">2</div>
+                    <div className="slider_Wrapper">
+                        <div className="slider_Img" id="slider_Img1">
+                            <div className="maskForImg mask_black"></div>
+                        </div>
+                    </div>
+                    <div className="slider_Img">
+                        <div className="slider_Img" id="slider_Img2"></div>
+                    </div>
                 </Slider>
                 {/* <p>{this.state.message} </p> */}
             </div>

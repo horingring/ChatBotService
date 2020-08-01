@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ChatBotChatting from './ChatBotDemo/ChatBotChatting';
 import ChatBotExtraBox from './ChatBotDemo/ChatBotExtraBox';
+import bulb from "../img/lightbulb.jpg";
 
 
 class ChatBotDemo extends Component{
@@ -19,30 +20,38 @@ class ChatBotDemo extends Component{
     render(){
 
         return(
-            <div id="ChatBotDemoPage" className="H100pct">
-                <h2 className="ContentTitle">
-                    ChatBotDemo
-                </h2>
-                <div id="ChatBotDemoMain">
-                    <ChatBotChatting
-                        //0722, 경호, ChatBotChatting 컴포넌트에 props로 뿌려주는 데이터(채팅List, user의 session)
-                        chatData={this.state.chatList}
-                        userData={this.state.userData}
-                        //0721, 경호, submit버튼 누를 시 state의 chatList에 채팅내용 추가해주는 이벤트.    
-                        onSubmit={function(_content){
-                            var _max_chatNum = this.state.max_chatNum + 1;
-                            var _userData = this.state.userData;
-                            var _chatList = this.state.chatList.concat(
-                                {chatNum:_max_chatNum, m_idx:_userData.m_idx, user:_userData.user, content:_content}
-                            );  //state에 추가할 내용 concat
-                            this.setState({
-                                chatList : _chatList,
-                                max_chatNum : _max_chatNum
-                            }); //1.state에 대화내용 추가   2.대화내용 내부 정보인 max_chatNum(채팅순서)를 +1 해줌.
-                        }.bind(this)}
-                    ></ChatBotChatting>
-                    <ChatBotExtraBox></ChatBotExtraBox>
+            <div id="ChatBotDemoPage">
+                <div className="IntroImg xyCenter" id="IntroImg_ChatBotDemo">
+                    <div className="xyCenter">
+                        <h1>ChatBot Demo</h1>
+                        <p>챗봇 데모 페이지입니다.</p>
+                    </div>
                 </div>
+                <article className="Article_Container">
+                    <h2 className="ContentTitle">
+                        ChatBotDemo
+                    </h2>
+                    <div id="ChatBotDemoMain">
+                        <ChatBotChatting
+                            //0722, 경호, ChatBotChatting 컴포넌트에 props로 뿌려주는 데이터(채팅List, user의 session)
+                            chatData={this.state.chatList}
+                            userData={this.state.userData}
+                            //0721, 경호, submit버튼 누를 시 state의 chatList에 채팅내용 추가해주는 이벤트.    
+                            onSubmit={function(_content){
+                                var _max_chatNum = this.state.max_chatNum + 1;
+                                var _userData = this.state.userData;
+                                var _chatList = this.state.chatList.concat(
+                                    {chatNum:_max_chatNum, m_idx:_userData.m_idx, user:_userData.user, content:_content}
+                                );  //state에 추가할 내용 concat
+                                this.setState({
+                                    chatList : _chatList,
+                                    max_chatNum : _max_chatNum
+                                }); //1.state에 대화내용 추가   2.대화내용 내부 정보인 max_chatNum(채팅순서)를 +1 해줌.
+                            }.bind(this)}
+                        ></ChatBotChatting>
+                        <ChatBotExtraBox></ChatBotExtraBox>
+                    </div>
+                </article>
             </div>
         );
     }

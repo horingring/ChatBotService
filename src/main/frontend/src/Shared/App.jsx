@@ -11,20 +11,19 @@ import ChatBotDemo from '../Pages/ChatBotDemo';
 import MemberIntro from '../Pages/MemberIntro';
 
 class App extends Component {
+
     render() {
         return (
             <div id="App">
                 {/*Menu bar*/}
                 <Menu/>
                 {/*Body side*/}
-                <div className="Body">
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/CreateMember" component={CreateMember}/>
-                    <Route path="/MyPage" component={MyPage}/>
-                    <Route path="/ChatBotIntro" component={ChatBotIntro}/>
-                    <Route path="/ChatBotDemo" component={ChatBotDemo}/>
-                    <Route path="/MemberIntro" component={MemberIntro}/>
-                </div>
+                <Route exact path="/" component={Home}/>
+                <Route path="/CreateMember" component={CreateMember}/>
+                <Route path="/MyPage" component={MyPage}/>
+                <Route path="/ChatBotIntro" component={ChatBotIntro}/>
+                <Route path="/ChatBotDemo" component={ChatBotDemo}/>
+                <Route path="/MemberIntro" component={MemberIntro}/>
                 {/*Footer Side*/}
                 <div className="Footer">
                     <Footer/>

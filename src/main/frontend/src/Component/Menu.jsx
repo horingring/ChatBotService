@@ -19,6 +19,7 @@ class Menu extends Component{
         return (
             <div id="Header">
                 <Navbar className="Header_Navbar" style={{padding:"0 16px", display:"flex", justifyContent:"center"}} variant="dark">
+                    <div className="mask_black"></div>
                     <Link to="/">
                         <img className="Header_logo" style={{width: "50px", height: "50px"}} src={logo} alt="yrb 로고"/>
                     </Link>
@@ -28,6 +29,7 @@ class Menu extends Component{
                                 <div className="dropDownMenu_Wrapper" id="dropDown_ChatBotService">
                                     <ul className="dropDownMenu">
                                         <li><Link to="/ChatBotIntro" style={{textDecoration:"none", color:"white"}}>
+                                                <div className="mask_black"></div>
                                                 <div className="dropDown_div">
                                                     <div><img src={logo} alt="챗봇 인트로 로고"></img></div>
                                                     <div style={{height:"30px", marginTop:"4px"}}><span style={{fontSize:"20px"}}>챗봇 인트로</span></div>
@@ -35,6 +37,7 @@ class Menu extends Component{
                                             </Link>
                                         </li>
                                         <li><Link to="/ChatBotDemo" style={{textDecoration:"none", color:"white"}}>
+                                                <div className="mask_black"></div>
                                                 <div className="dropDown_div">
                                                     <div><img src={logo} alt="챗봇 인트로 로고"></img></div>
                                                     <div style={{height:"30px", marginTop:"4px"}}><span style={{fontSize:"20px"}}>챗봇 데모</span></div>
@@ -51,6 +54,7 @@ class Menu extends Component{
                     </div>
                     <Link to ="/CreateMember"><Button variant="outline-info">로그인</Button></Link>
                     <Link to ="/MyPage"><Button variant="outline-info">나의 정보</Button></Link>
+                    <a href="http://192.168.43.211:8080/"><Button>GoTo8080</Button></a>
                     {/* <Form inline>
                         <Button variant="outline-info" onClick={() => setModalShow(true)} style={{margin: "10px"}}><Link to="/CreateMember">로그인</Link></Button>
                         <Link to ="/MyPage"><Button variant="outline-info">나의 정보</Button></Link>

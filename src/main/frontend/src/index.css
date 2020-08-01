@@ -30,6 +30,13 @@ body {
   height: 100%;
 }
 
+/* 가로, 세로 가운데정렬 */
+.xyCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* 공통 */
 html, body, #root, #App{
@@ -45,29 +52,29 @@ html, body, #root, #App{
   text-decoration: none;
 }
 
-#Header, #Content, #Footer{
+#Header, #Content, .Footer{
   width: 100%;
 }
 
 #Header{
   width: 100%;
-  height: 16%;
+  height: 16vh;
   position: fixed;
   z-index: 300;
 }
 
-.Body{
+/* .Body{
   width: 100%;
-  height: 100%;
   box-sizing: content-box;
-}
+} */
 
 #Content{
   height: 95%;
 }
 
-#Footer{
-  height: 10%;
+.Footer{
+  height: 300px;
+  background: #ccc;
 }
 
 .ContentTitle{
@@ -79,10 +86,17 @@ html, body, #root, #App{
 
 /* 헤더 */
 .Header_Navbar{
+  position: relative;
   width: 100%;
   height: 90%;
-  background-color: #343a40;
-  opacity: 0.7;
+  background-color: none;
+}
+.Header_Navbar>.mask_black{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
 }
 
 .Header_logo{
@@ -125,16 +139,28 @@ html, body, #root, #App{
   display: flex;
   flex-direction: row;
 }
-
+.dropDownMenu .mask_black{
+  opacity: 0;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: 1s;
+}
+.dropDownMenu .mask_black:hover{
+  opacity: 0.5;
+}
 .dropDown_div{
   width: 200px;
   height: 200px;
-  background-color: #343a40;
+  background-color: black;
   padding-top: 10px;
   transition: 1s;
+  opacity: 0.5;
 }
 .dropDown_div:hover{
-  background-color: #222529;
+  opacity: 1;
+  background-color: none;
 }
 
 .dropDown_div div{
@@ -149,6 +175,27 @@ html, body, #root, #App{
 }
 
 /* ---------- Body 내부 ---------- */
+/* Body 공통 */
+.Article_Container{
+  width: 100%;
+  margin: 140px 0;
+}
+@media screen and (min-width: 1025px){
+  .Article_Container{
+    padding: 0 15%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px){
+  .Article_Container{
+    padding: 0 10%;
+  }
+}
+@media screen and (max-width: 768px ){
+  .Article_Container{
+    padding: 0 5%;;
+  }
+}
+
 /* 홈페이지 */
 #HomePage{
   width: 100%;
@@ -186,15 +233,35 @@ html, body, #root, #App{
   bottom: 2%!important;
 }
 
-.testDiv1{
+.slider_Wrapper{
   width: 100%;
   height: 100%!important;
-  background-color: yellow;
 }
-.testDiv2{
+
+.slider_Img{
   width: 100%;
-  height: 100%!important;
-  background-color: purple;
+  height: 100%;
+}
+#slider_Img1{
+  position: relative;
+  background-image: url('./img/pizza2.jpg');
+  background-position-x: left;
+  background-position-y: bottom;
+}
+#slider_Img2{
+  background-image: url('./img/iphone.jpg');
+  background-size: 100%;
+  background-position-y: top;
+}
+.maskForImg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.mask_black{
+  background-color: black;
+  opacity: 0.5;
 }
 /* .testDiv3{
   width: 100%;
@@ -209,11 +276,44 @@ html, body, #root, #App{
   border: 1px solid black;
 } */
 
+/* 챗봇인트로 */
+#ChatBotIntroPage{
+  width: 100%;
+}
+.IntroImg{
+  width: 100%;
+  height: 90vh;
+}
+.IntroImg>div{
+  flex-direction: column;
+}
+
+.IntroImg>div>h1, .IntroImg>div>p{
+  color: white;
+}
+
+#IntroImg_ChatBotIntro{
+  background-image: url('./img/lightbulb.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
+}
+#IntroImg_ChatBotDemo{
+  background-image: url('./img/network.jpg');
+  background-size: 100%;
+  background-position-x: center;
+  background-position-y: center;
+  background-attachment: fixed;
+}
+
+.IntroImg_Wrapper>img{
+  width: 100%;
+  height: auto;
+}
 
 /* 챗봇데모 */
 #ChatBotDemoPage{
  width: 100%;
- height: 100%;
  margin: 0 auto;
  display: flex;
  flex-direction: column;
@@ -382,4 +482,26 @@ html, body, #root, #App{
   border: 8px solid lightgray;
   border-radius: 15px;
   box-sizing: border-box;
+}
+
+#MemberIntroPage{
+  width: 100%;
+  margin: 0 auto;
+}
+#IntroImg_MemberIntro{
+  position: relative;
+  background-image: url('./img/cooperation.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
+}
+#IntroImg_MemberIntro .mask_black{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+#IntroImg_MemberIntro .xyCenter{
+  position: relative;
+  z-index: 1;
 }
