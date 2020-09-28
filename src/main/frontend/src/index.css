@@ -1,10 +1,60 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+/* Font-Montserrat */
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  src: url("../src/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  src: url("../src/fonts/Montserrat-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  src: url("../src/fonts/Montserrat-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 900;
+  src: url("../src/fonts/Montserrat-Black.ttf") format("truetype");
+}
+
+/* Font-정선동강체 */
+@font-face {
+  font-family: "JSDongkang";
+  font-weight: 500;
+  src: url("../src/fonts/JSDongkang-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JSDongkang";
+  font-weight: 700;
+  src: url("../src/fonts/JSDongkang-Bold.ttf") format("truetype");
+}
+
+* {
+  font-family: "Montserrat", "JSDongkang", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
 }
 
 /* code {
@@ -12,34 +62,44 @@ body {
     monospace;
 } */
 
-
 /* 편의상 정의 */
 /* 폭&높이 100% */
-.WH100pct{
+.WH100pct {
   width: 100%;
   height: 100%;
 }
 
 /* 폭 100% */
-.W100pct{
+.W100pct {
   width: 100%;
 }
 
 /* 높이 100% */
-.H100pct{
+.H100pct {
   height: 100%;
 }
 
 /* 가로, 세로 가운데정렬 */
-.xyCenter{
+.xyCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* div 가로/세로 정렬 */
+.flexRow {
+  display: flex;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
 
 /* 공통 */
-html, body, #root, #App{
+html,
+body,
+#root,
+#App {
   width: 100%;
   height: 100%;
 }
@@ -48,19 +108,22 @@ html, body, #root, #App{
   position: relative;
 } */
 
-.ReactRouterDom_Link:hover{
+.ReactRouterDom_Link:hover {
   text-decoration: none;
 }
 
-#Header, #Content, .Footer{
+#Header,
+#Content,
+#Footer {
   width: 100%;
 }
 
-#Header{
+#Header {
   width: 100%;
   height: 16vh;
   position: fixed;
   z-index: 300;
+  top: 0;
 }
 
 /* .Body{
@@ -68,30 +131,34 @@ html, body, #root, #App{
   box-sizing: content-box;
 } */
 
-#Content{
+#Content {
   height: 95%;
 }
 
-.Footer{
-  height: 300px;
-  background: #ccc;
+.Footer {
+  height: fit-content;
+  position: relative;
+  bottom: 0;
+  background: #f0f0f0;
+  padding: 2.7% 5%;
+  display: flex;
 }
 
-.ContentTitle{
+.ContentTitle {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
   border-bottom: 3px solid #343a40;
   padding-bottom: 10px;
 }
 
 /* 헤더 */
-.Header_Navbar{
+.Header_Navbar {
   position: relative;
   width: 100%;
   height: 90%;
   background-color: none;
 }
-.Header_Navbar>.mask_black{
+.Header_Navbar > .mask_black {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -99,47 +166,81 @@ html, body, #root, #App{
   top: 0;
 }
 
-.Header_logo{
+.Header_logo {
   width: 50px;
   height: 50px;
   margin-right: 50px;
 }
 
-.Menu_Container{
+.Menu_Container {
   display: flex;
   flex-direction: row;
   height: 100%;
 }
-.Menu{
+.Menu {
   height: 100%;
   color: rgb(228, 224, 224);
-  font-size: 25px;
+  font-size: 18px;
   display: flex;
   align-items: center;
 }
-.Menu:hover{
-  color:white;
+.Menu:hover {
+  color: white;
 }
 
-#Menu_ChatBotService{
+.navBar_left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navBar_right {
+  float: right;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+}
+
+.navBar_right > a {
+  margin-right: 20px;
+}
+
+.navBar_right > a:hover {
+  text-decoration: none;
+}
+.navBar_right > a:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.navBar_right div {
+  font-size: 16px;
+}
+
+.paddingForNavBar {
+  margin-top: 50px;
+  padding: 16vh 8vw;
+}
+
+#Menu_ChatBotService {
   position: relative;
   transition: all ease 2s 0s;
 }
 
-.dropDownMenu_Wrapper{
+.dropDownMenu_Wrapper {
   position: absolute;
   top: 100%;
   display: none;
 }
 
-.dropDownMenu{
+.dropDownMenu {
   margin: 0;
   padding: 0;
   list-style-type: none;
   display: flex;
   flex-direction: row;
 }
-.dropDownMenu .mask_black{
+.dropDownMenu .mask_black {
   opacity: 0;
   width: 50%;
   height: 100%;
@@ -147,10 +248,10 @@ html, body, #root, #App{
   top: 0;
   transition: 1s;
 }
-.dropDownMenu .mask_black:hover{
+.dropDownMenu .mask_black:hover {
   opacity: 0.5;
 }
-.dropDown_div{
+.dropDown_div {
   width: 200px;
   height: 200px;
   background-color: black;
@@ -158,110 +259,188 @@ html, body, #root, #App{
   transition: 1s;
   opacity: 0.5;
 }
-.dropDown_div:hover{
+.dropDown_div:hover {
   opacity: 1;
   background-color: none;
 }
 
-.dropDown_div div{
+.dropDown_div div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dropDown_div img{
+.dropDown_div img {
   width: 150px;
   height: 150px;
 }
 
 /* ---------- Body 내부 ---------- */
 /* Body 공통 */
-.Article_Container{
+.Article_Container {
   width: 100%;
   margin: 140px 0;
 }
-@media screen and (min-width: 1025px){
-  .Article_Container{
+@media screen and (min-width: 1025px) {
+  .Article_Container {
     padding: 0 15%;
   }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px){
-  .Article_Container{
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .Article_Container {
     padding: 0 10%;
   }
 }
-@media screen and (max-width: 768px ){
-  .Article_Container{
-    padding: 0 5%;;
+@media screen and (max-width: 768px) {
+  .Article_Container {
+    padding: 0 5%;
   }
 }
 
+.article_title {
+  padding: 30px 0;
+}
+
 /* 홈페이지 */
-#HomePage{
+#HomePage {
   width: 100%;
-  height: 100%;  
+  height: 100%;
 }
 
 /* 슬라이더 */
-.slick-slider{
+.slick-slider {
   width: 100%;
   height: 100%;
 }
-.slick-list{
+.slick-list {
   width: 100%;
   height: 100%;
 }
-.slick-track, .slick-slide{
+.slick-track,
+.slick-slide {
   height: 100%;
 }
-.slick-slide div{
+.slick-slide div {
   height: 100%;
 }
 
 /* 슬라이더 버튼 */
-.slick-prev{
-  left:2%!important;
+.slick-prev {
+  left: 2% !important;
   position: relative;
   z-index: 5;
 }
-.slick-next{
-  right:2%!important;
+.slick-next {
+  right: 2% !important;
 }
 
 /* 슬라이더 즉시이동 */
-.slick-dots{
-  bottom: 2%!important;
+.slick-dots {
+  bottom: 2% !important;
 }
 
-.slider_Wrapper{
+.slider_Wrapper {
   width: 100%;
-  height: 100%!important;
+  height: 100% !important;
+  position: relative;
 }
 
-.slider_Img{
+.slider_Img {
   width: 100%;
   height: 100%;
 }
-#slider_Img1{
+#slider_Img1 {
   position: relative;
-  background-image: url('./img/pizza2.jpg');
+  background-image: url("./img/pizza2.jpg");
   background-position-x: left;
   background-position-y: bottom;
 }
-#slider_Img2{
-  background-image: url('./img/iphone.jpg');
+#slider_Img2 {
+  background-image: url("./img/iphone.jpg");
   background-size: 100%;
   background-position-y: top;
 }
-.maskForImg{
+
+.maskForImg {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
 }
-.mask_black{
+.mask_black {
   background-color: black;
   opacity: 0.5;
+}
+
+.slider_comment {
+  position: absolute;
+  box-sizing: content-box;
+}
+
+.slick-slider .slider_comment {
+  height: fit-content;
+}
+
+.slider_comment1-1 {
+  display: none;
+  z-index: 1;
+  font-size: 30px;
+  color: white;
+  top: 70%;
+  left: 47%;
+}
+.slider_comment1-1 strong {
+  font-size: 48px;
+}
+
+.slider_comment1-2 {
+  display: none;
+  z-index: 1;
+  font-size: 60px;
+  color: white;
+  top: 80%;
+  left: 55%;
+}
+.slider_comment2-1 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  z-index: 1;
+  font-size: 40px;
+  color: white;
+  top: 20%;
+  left: 68%;
+}
+.slider_comment2-1 strong {
+  font-size: 50px;
+}
+
+.slider_comment2-2 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  word-spacing: -10px;
+  z-index: 1;
+  font-size: 24px;
+  color: white;
+  top: 28%;
+  left: 80%;
+}
+.slider_comment2-2 strong:nth-child(1) {
+  font-size: 32px;
+  position: relative;
+  left: -1.5%;
+}
+.slider_comment2-2 strong:nth-child(2) {
+  font-size: 60px;
+  position: absolute;
+  z-index: 2;
+  top: 15%;
+  left: -39%;
+}
+
+.slider_comment2-2 strong:nth-child(3) {
+  font-size: 32px;
+  position: relative;
+  left: 1.5%;
 }
 /* .testDiv3{
   width: 100%;
@@ -277,56 +456,75 @@ html, body, #root, #App{
 } */
 
 /* 챗봇인트로 */
-#ChatBotIntroPage{
+#ChatBotIntroPage {
   width: 100%;
 }
-.IntroImg{
+.IntroImg {
   width: 100%;
   height: 90vh;
 }
-.IntroImg>div{
+.IntroImg > div {
   flex-direction: column;
 }
 
-.IntroImg>div>h1, .IntroImg>div>p{
+.IntroImg > div > h1,
+.IntroImg > div > p {
   color: white;
 }
 
-#IntroImg_ChatBotIntro{
-  background-image: url('./img/lightbulb.jpg');
+#IntroImg_ChatBotIntro {
+  background-image: url("./img/lightbulb.jpg");
   background-size: 100%;
   background-position: center;
   background-attachment: fixed;
 }
-#IntroImg_ChatBotDemo{
-  background-image: url('./img/network.jpg');
+#IntroImg_ChatBotDemo {
+  background-image: url("./img/network.jpg");
   background-size: 100%;
   background-position-x: center;
   background-position-y: center;
   background-attachment: fixed;
 }
 
-.IntroImg_Wrapper>img{
+.introImg_pizzaMenu {
+  background-image: url("./img/pizza_intro.jpg");
+  background-size: 100%;
+  background-position-x: center;
+  background-position-y: 40%;
+  background-attachment: fixed;
+}
+
+.IntroImg_Wrapper > img {
   width: 100%;
   height: auto;
 }
 
-/* 챗봇데모 */
-#ChatBotDemoPage{
- width: 100%;
- margin: 0 auto;
- display: flex;
- flex-direction: column;
+#ChatBotIntroPage .Article_Container .xyCenter {
+  position: relative;
 }
 
-#ChatBotDemoMain{
+.button_label {
+  position: absolute;
+  top: 0;
+  left: 33%;
+}
+
+/* 챗봇데모 */
+#ChatBotDemoPage {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#ChatBotDemoMain {
   width: 100%;
   height: 600px;
   display: flex;
   flex-direction: row;
 }
 
-#ChatBotChatting_Container{
+#ChatBotChatting_Container {
   width: 60%;
   height: 606px;
   box-sizing: border-box;
@@ -336,15 +534,14 @@ html, body, #root, #App{
 }
 
 /* ChatBotChatting 전체 영역 */
-.ChatBotChattingBox_Wrapper{
+.ChatBotChattingBox_Wrapper {
   width: 100%;
   border: 3px solid lightgray;
   border-radius: 10px;
   margin-bottom: 10px;
-
 }
 
-#ChatBotChattingBox{
+#ChatBotChattingBox {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -357,66 +554,74 @@ html, body, #root, #App{
   overflow-y: scroll;
 }
 
-  /* 0724금, 경호, div 내 scrollbar */
-#ChatBotChattingBox::-webkit-scrollbar{
+/* 0724금, 경호, div 내 scrollbar */
+#ChatBotChattingBox::-webkit-scrollbar {
   width: 10px;
 }
-#ChatBotChattingBox::-webkit-scrollbar-track{
+#ChatBotChattingBox::-webkit-scrollbar-track {
   background-color: #ffaa64;
 }
-#ChatBotChattingBox::-webkit-scrollbar-thumb{
+#ChatBotChattingBox::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #fa8f38;
 }
-#ChatBotChattingBox::-webkit-scrollbar-button:start:decrement{
+#ChatBotChattingBox::-webkit-scrollbar-button:start:decrement {
   width: 10px;
   height: 10px;
   background-color: #ffaa64;
 }
-#ChatBotChattingBox::-webkit-scrollbar-button:end:increment{
+#ChatBotChattingBox::-webkit-scrollbar-button:end:increment {
   width: 10px;
   height: 10px;
   background-color: #ffaa64;
 }
-
 
 /* 챗봇 채팅창 영역 */
-.chatNextBox{
+.chatNextBox {
   margin-bottom: 20px;
 }
 
-.chatBoxContainerForOtherUser{
+.chatNextBox_right {
+  text-align: right;
+}
+
+.chatBoxContainerForOtherUser {
   display: flex;
   flex-direction: row;
 }
 
-.chatProfilePicture{
+.chatProfilePicture {
   margin-right: 15px;
   display: flex;
   align-items: center;
 }
-.chatProfilePicture img{
+.chatProfilePicture img {
   width: 40px;
   height: 40px;
 }
 
-.chatName{
+.chatName {
   margin-bottom: 5px;
 }
 
-.chatContent{
+.chatContent {
   display: inline-block;
   background-color: #ffd460;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 10px 10px;
   max-width: 300px;
 }
-.chatContent_right{
-  text-align: right;
+
+.chatContent_left {
+  border-top-left-radius: 0;
+}
+
+.chatContent_right {
+  border-bottom-right-radius: 0;
 }
 
 /* 챗봇 입력 영역 */
-#ChatBotInputBox_Container{
+#ChatBotInputBox_Container {
   width: 100%;
   height: 100px;
   box-sizing: border-box;
@@ -426,34 +631,34 @@ html, body, #root, #App{
   flex-direction: row;
 }
 
-#InputForm{
+#InputForm {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
 }
 
-#ChatBotInput_Box{
+#ChatBotInput_Box {
   width: 80%;
   height: 100%;
   padding: 10px;
 }
 
-#InputTextarea{
+#InputTextarea {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-#InputTextarea:focus{
+#InputTextarea:focus {
   outline: none;
 }
 
-#InputTextarea:active{
-  border:none
+#InputTextarea:active {
+  border: none;
 }
 
-#ChatBotInput_Button{
+#ChatBotInput_Button {
   width: 20%;
   height: 40%;
   background-color: #ffd460;
@@ -466,17 +671,14 @@ html, body, #root, #App{
   outline: none;
   border: none;
 }
-#ChatBotInput_Button:hover{
+#ChatBotInput_Button:hover {
   cursor: pointer;
 }
-#ChatBotInput_Button:active{
+#ChatBotInput_Button:active {
   background-color: #dfb952;
 }
 
-
-
-
-#ChatBotExtraBox_Container{
+#ChatBotExtraBox_Container {
   width: 40%;
   height: 606px;
   border: 8px solid lightgray;
@@ -484,24 +686,344 @@ html, body, #root, #App{
   box-sizing: border-box;
 }
 
-#MemberIntroPage{
+#MemberIntroPage {
   width: 100%;
   margin: 0 auto;
 }
-#IntroImg_MemberIntro{
+#IntroImg_MemberIntro {
   position: relative;
-  background-image: url('./img/cooperation.jpg');
+  background-image: url("./img/cooperation.jpg");
   background-size: 100%;
   background-position: center;
   background-attachment: fixed;
 }
-#IntroImg_MemberIntro .mask_black{
+#IntroImg_MemberIntro .mask_black {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
 }
-#IntroImg_MemberIntro .xyCenter{
+#IntroImg_MemberIntro .xyCenter {
   position: relative;
   z-index: 1;
 }
+
+/* 푸터 */
+.Footer a:hover {
+  text-decoration: none;
+}
+
+.FooterDiv {
+  width: 50%;
+}
+
+.footer_title {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.Footer table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.Footer table td {
+  font-size: 14px;
+  padding: 0 10px 5px 10px;
+}
+
+.Footer table td:nth-child(2) {
+  border-left: 1px solid lightgray;
+}
+
+.FooterDiv ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.FooterDiv ul li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.spanToFlex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* 회원가입 */
+.createMember-container {
+  margin: 16vh 0;
+  padding: 50px 100px;
+}
+
+/* 피자리스트 */
+.pizzaMenu__main {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+}
+
+.pizzaMenu__pizzaGrade {
+  width: fit-content;
+  border-bottom: 5px solid #343a40;
+}
+
+.pizzaMenu__list {
+  margin-top: 50px;
+}
+
+.pizzaMenu__row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.pizzaMenu__row .pizzaMenu__menu__link {
+  color: black;
+  width: 30%;
+}
+
+.pizzaMenu__row .pizzaMenu__menu__link:hover {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.pizzaMenu__menu__link:nth-last-child(1):hover {
+  cursor: default;
+}
+
+.pizzaMenu__menu {
+  width: 100%;
+  height: auto;
+}
+
+.pizzaMenu__img {
+  width: 100%;
+  height: inherit;
+}
+
+.pizzaMenu__pizzaName {
+  width: 300px;
+}
+
+.pizzaMenu__sizeNprice__box {
+  display: flex;
+}
+
+.pizzaMenu__sizeNprice__box .pizzaMenu__sizeNprice {
+  margin-right: 25%;
+}
+
+/* 피자상세정보 & 주문 */
+.pizzaDetailInfo_page {
+  box-sizing: content-box;
+}
+
+.pizzaOutlineNOrder_box {
+  display: flex;
+  margin-top: 50px;
+}
+
+.pizzaOutline_box img {
+  width: 500px;
+  height: 300px;
+}
+
+.pizzaOrder_box {
+  margin-left: 100px;
+}
+
+.pizzaOrder_form_box h4 {
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.pizzaOrder_form select {
+  display: block;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+.pizzaOrder_price {
+  display: block;
+  text-align: right;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.pizzaOrder_form_box .button_box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pizzaDetailInfo_page .button {
+  color: white;
+  font-weight: 600;
+  padding: 15px 25px;
+  background-color: #ffd460;
+  border-radius: 5px;
+}
+
+/* 주문 & 주문완료 & 장바구니 공통 */
+.order_page > h3,
+.orderComplete_page > h3,
+.basketList_page > h3 {
+  border-bottom: 1px solid lightgray;
+}
+
+.order_page article > table,
+.orderComplete_page table,
+.basketList_page table {
+  width: 100%;
+  margin: 30px 0;
+  border-collapse: collapse;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.order_page article > table th,
+.orderComplete_page table th,
+.basketList_page table th {
+  background-color: rgb(245, 244, 244);
+  height: 40px;
+}
+
+.order_page article > table th:nth-child(1),
+.orderComplete_page table th:nth-child(1),
+.basketList_page table th:nth-child(1) {
+  width: 200px;
+}
+
+.order_page article > table td:nth-child(1),
+.orderComplete_page table td:nth-child(1),
+.basketList_page table td:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order_page article > table td,
+.orderComplete_page table td,
+.basketList_page table td {
+  height: 70px;
+}
+
+.order_page article > table img,
+.orderComplete_page table img,
+.basketList_page table img {
+  height: 50px;
+  width: 80px;
+}
+
+.totalPrice-container {
+  display: flex;
+  align-items: center;
+  float: right;
+  margin-bottom: 70px;
+}
+
+.totalPrice-container > div {
+  padding: 0 10px;
+}
+
+.totalPrice-container .price-boxes span {
+  text-align: center;
+  display: block;
+}
+
+.orderComplete_page .button_box,
+.basketList_page .button_box {
+  clear: both;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.orderComplete_page .button_box > a:hover,
+.basketList_page .button_box > a:hover {
+  text-decoration: none;
+}
+
+#ChatBotIntroPage .button,
+.orderComplete_page .button,
+.basketList_page .button {
+  color: white;
+  font-weight: 600;
+  padding: 15px 25px;
+  background-color: #ffd460;
+  border-radius: 5px;
+}
+
+/* 주문페이지 */
+
+.order_page article {
+  margin: 70px 10px;
+}
+
+.order_page h5 {
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  width: fit-content;
+  border-bottom: 3px solid lightgray;
+}
+
+.order_page article > table {
+  margin-bottom: 70px;
+}
+
+.order_page .order_form table {
+  width: 100%;
+  margin-bottom: 70px;
+  border-collapse: collapse;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.order_page .order_form table tr {
+  height: 60px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.order_page .order_form table th {
+  font-size: 14px;
+  padding-left: 30px;
+  width: 200px;
+  background-color: rgb(245, 244, 244);
+}
+
+.order_page .order_form table td {
+  padding-left: 20px;
+}
+
+.order_page .order_form table td input {
+  border: 1px solid lightgray;
+  font-size: 14px;
+  width: 300px;
+  padding: 5px 0 5px 20px;
+}
+
+.order_page .order_form table td .input_address {
+  width: 500px;
+}
+
+.order_page .order_form table td input:focus {
+  outline: 1px solid rgb(163, 163, 163);
+}
+
+/* 주문완료 페이지 */
+
+.orderComplete_page p {
+  text-align: center;
+  font-size: 20px;
+  display: block;
+  padding: 30px 0;
+}
+
+/* 장바구니 */
