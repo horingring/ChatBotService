@@ -30,7 +30,7 @@ class CreateMember extends React.Component {
 
     axios
       .post("/api/member/createMember", {
-        id: this.state.user_id,
+        user_id: this.state.user_id,
         name: this.state.user_name,
         password: this.state.user_password,
         city: this.state.user_city,
