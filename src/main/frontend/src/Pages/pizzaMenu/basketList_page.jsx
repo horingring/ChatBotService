@@ -1,8 +1,46 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import originPizza from "../../img/pizza2.jpg";
+import originalPizza from "../../img/pizza.jpg";
 
 class basketList_page extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pizza_list: [
+        {
+          p_idx: 1,
+          p_name: "Original Pizza",
+          p_price: { p_L_price: 26000, p_M_price: 21000 },
+          p_img: originPizza,
+        },
+        {
+          p_idx: 2,
+          p_name: "Vegetable Pizza",
+          p_price: { p_L_price: 28000, p_M_price: 23000 },
+          p_img: originalPizza,
+        },
+        {
+          p_idx: 3,
+          p_name: "Combination Pizza",
+          p_price: { p_L_price: 30000, p_M_price: 25000 },
+          p_img: originPizza,
+        },
+        {
+          p_idx: 4,
+          p_name: "Pepperoni Pizza",
+          p_price: { p_L_price: 29000, p_M_price: 24000 },
+          p_img: originalPizza,
+        },
+        {
+          p_idx: 5,
+          p_name: "Bulgogi Pizza",
+          p_price: { p_L_price: 31000, p_M_price: 26000 },
+          p_img: originPizza,
+        },
+      ],
+    };
+  }
   render() {
     return (
       <div className="basketList_page paddingForNavBar">

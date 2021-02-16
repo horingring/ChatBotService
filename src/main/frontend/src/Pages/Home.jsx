@@ -43,7 +43,7 @@ class Home extends Component {
     var slider_img1 = document.getElementById("slider_Img1");
     var relativeLeft = slider_img1.getBoundingClientRect().left;
     console.log("if문 이전");
-    if (relativeLeft == 0) {
+    if (relativeLeft === 0) {
       console.log("if문 실행시작");
       setTimeout(function () {
         $(".slider_comment1-1").fadeIn();
@@ -90,7 +90,7 @@ class Home extends Component {
     }
 
     //다시 fadeIn
-    if (relativeLeft == 0) {
+    if (relativeLeft === 0) {
       console.log("if문 다시 실행시작");
       setTimeout(function () {
         $(".slider_comment1-1").fadeIn();

@@ -12,8 +12,10 @@ import ChatBotDemo from "../Pages/ChatBotDemo";
 import MemberIntro from "../Pages/MemberIntro";
 import pizzaDetailInfo_page from "../Pages/pizzaMenu/pizzaDetailInfo_page";
 import order_page from "../Pages/pizzaMenu/order_page";
+import order_page2 from "../Pages/pizzaMenu/order_page";
 import orderComplete_page from "../Pages/pizzaMenu/orderComplete_page";
 import basketList_page from "../Pages/pizzaMenu/basketList_page";
+import device from "../Pages/pizzaMenu/device";
 
 class App extends Component {
   render() {
@@ -37,8 +39,14 @@ class App extends Component {
           path="/order_page/:p_idx/:p_size/:p_dough/:p_cheese"
           component={order_page}
         />
+        {/* 객체단위 props 전달용 test 라우팅 */}
+        <Route
+          path="/order_page2/:p_idx/:p_size/:p_dough/:p_cheese"
+          component={order_page2}
+        />
         <Route path="/orderComplete_page" component={orderComplete_page} />
         <Route path="/basketList_page" component={basketList_page} />
+        <Route path="/device" component={device} />
 
         {/*Footer Side*/}
         <Footer />

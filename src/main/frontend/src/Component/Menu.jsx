@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../img/YRB_logo.png";
+import lightbulbLogo from "../img/lightbulb_logo.jpg";
+import networkLogo from "../img/network_logo.jpg";
 import { Button, Nav, Navbar, Form } from "react-bootstrap";
 import CreateMember from "../Pages/CreateMember";
 import $ from "jquery";
@@ -71,7 +73,7 @@ class Menu extends Component {
                           <div className="mask_black"></div>
                           <div className="dropDown_div">
                             <div>
-                              <img src={logo} alt="챗봇 인트로 로고"></img>
+                              <img src={lightbulbLogo} alt="챗봇 인트로 로고"></img>
                             </div>
                             <div style={{ height: "30px", marginTop: "4px" }}>
                               <span style={{ fontSize: "20px" }}>
@@ -89,7 +91,7 @@ class Menu extends Component {
                           <div className="mask_black"></div>
                           <div className="dropDown_div">
                             <div>
-                              <img src={logo} alt="챗봇 인트로 로고"></img>
+                              <img src={networkLogo} alt="챗봇 인트로 로고"></img>
                             </div>
                             <div style={{ height: "30px", marginTop: "4px" }}>
                               <span style={{ fontSize: "20px" }}>
@@ -123,6 +125,9 @@ class Menu extends Component {
             <Link to="/basketList_page">
               <div className="header_basketList_btn Menu">장바구니</div>
             </Link>
+            {/* <Link to="/device">
+              <div className="header_basketList_btn Menu">axios연습</div>
+            </Link> */}
             {/* <a href="http://192.168.43.211:8080/">
               <Button>GoTo8080</Button>
             </a> */}

@@ -16,7 +16,8 @@ public class Member {
 
     private long id;
     private String name;
-
+    private String user_id;
+    private String password;
     @Embedded
     private Address address;
     @OneToMany(mappedBy = "member")
