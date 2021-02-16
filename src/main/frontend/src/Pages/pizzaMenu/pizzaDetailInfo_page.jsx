@@ -253,6 +253,16 @@ class pizzaDetailInfo_page extends Component {
                     즉시주문
                   </div>
                 </Link>
+                {/* <Link
+                  to={function () {
+                    var { immediate_order_info } = this.state;
+                    return `/order_page2/${pizza_detailInfo.p_idx}/${immediate_order_info.selected_pizza_size}/${immediate_order_info.selected_dough}/${immediate_order_info.selected_cheese}`;
+                  }.bind(this)}
+                >
+                  <div className="button pizzaOrder_Immediate_btn">
+                    즉시주문2
+                  </div>
+                </Link> */}
               </div>
             </div>
           </div>
