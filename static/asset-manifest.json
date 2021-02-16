@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/chatbot_service/static/css/main.e5b54b6b.chunk.css",
+    "main.js": "/chatbot_service/static/js/main.9cd898c9.chunk.js",
+    "main.js.map": "/chatbot_service/static/js/main.9cd898c9.chunk.js.map",
+    "runtime-main.js": "/chatbot_service/static/js/runtime-main.9d877434.js",
+    "runtime-main.js.map": "/chatbot_service/static/js/runtime-main.9d877434.js.map",
+    "static/css/2.6109648b.chunk.css": "/chatbot_service/static/css/2.6109648b.chunk.css",
+    "static/js/2.dd6512a4.chunk.js": "/chatbot_service/static/js/2.dd6512a4.chunk.js",
+    "static/js/2.dd6512a4.chunk.js.map": "/chatbot_service/static/js/2.dd6512a4.chunk.js.map",
+    "index.html": "/chatbot_service/index.html",
+    "precache-manifest.8af80f3ed0c91a0219df8bd5c056508a.js": "/chatbot_service/precache-manifest.8af80f3ed0c91a0219df8bd5c056508a.js",
+    "service-worker.js": "/chatbot_service/service-worker.js",
+    "static/css/2.6109648b.chunk.css.map": "/chatbot_service/static/css/2.6109648b.chunk.css.map",
+    "static/css/main.e5b54b6b.chunk.css.map": "/chatbot_service/static/css/main.e5b54b6b.chunk.css.map",
+    "static/js/2.dd6512a4.chunk.js.LICENSE.txt": "/chatbot_service/static/js/2.dd6512a4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/chatbot_service/static/media/pizza_intro.fa8b2886.jpg",
+    "static/media/lightbulb_logo.jpg": "/chatbot_service/static/media/lightbulb_logo.bdfdee9f.jpg",
+    "static/media/network_logo.jpg": "/chatbot_service/static/media/network_logo.c4b24258.jpg",
+    "static/media/pizza.jpg": "/chatbot_service/static/media/pizza.15d69df4.jpg",
+    "static/media/slick-theme.css": "/chatbot_service/static/media/slick.f97e3bbf.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9d877434.js",
+    "static/css/2.6109648b.chunk.css",
+    "static/js/2.dd6512a4.chunk.js",
+    "static/css/main.e5b54b6b.chunk.css",
+    "static/js/main.9cd898c9.chunk.js"
+  ]
+}
