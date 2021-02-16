@@ -27,7 +27,6 @@ class CreateMember extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.state.id);
-
     axios
       .post("/api/member/createMember", {
         user_id: this.state.user_id,
