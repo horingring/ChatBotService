@@ -402,6 +402,7 @@ body,
   left: 55%;
 }
 .slider_comment2-1 {
+  display: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
   z-index: 1;
@@ -415,6 +416,7 @@ body,
 }
 
 .slider_comment2-2 {
+  display: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
   word-spacing: -10px;

@@ -9,11 +9,9 @@ import $ from "jquery";
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      slideMode: 1,
-    };
   }
 
+  // props변경 x일 시 -> 리렌더링 x
   shouldComponentUpdate(newProps) {
     if (this.props.data === newProps.data) {
       return false;
@@ -21,93 +19,25 @@ class Home extends Component {
       return true;
     }
   }
-  // getRelativeLeft = (element) => {
-  //   var relativeLeft = element.getBoundingClientRect().left;
-  //   return relativeLeft;
-  // };
 
   //0917, 경호, 이 부분 첫번째 setTimeout()은 작동하는데 두 번째 setTimeout은 동작x. 수정 필요.
   //최초 렌더링 되었을 때 fadeIn 되어야 함
   componentDidMount() {
+    // scroll to Top
     window.scrollTo(0, 0);
     console.log("스크롤탑 실행됨");
-    // $(document).ready(function () {
-    //   setTimeout(function () {
-    //     $(".slider_comment1-1").fadeIn();
-    //   }, 1000);
-    //   setTimeout(function () {
-    //     $(".slider_comment1-2").fadeIn();
-    //   }, 2000);
-    // });
 
-    var slider_img1 = document.getElementById("slider_Img1");
-    var relativeLeft = slider_img1.getBoundingClientRect().left;
-    console.log("if문 이전");
-    if (relativeLeft === 0) {
-      console.log("if문 실행시작");
-      setTimeout(function () {
-        $(".slider_comment1-1").fadeIn();
-      }, 1000);
-      setTimeout(function () {
-        $(".slider_comment1-2").fadeIn();
-      }, 2000);
-      console.log("if문 내부. if문 실행완료");
-    }
-
-    // this.setState({
-    //   windowWidth: _windowWidth,
-    // }).bind(this);
-    //
-    // var slider_img2 = $("#slider_Img2");
-    // var slider_comment1_1 = $(".slider_comment1_1");
-    // var slider_comment1_2 = $(".slider_comment1_2");
-    // if (this.getRelativeLeft(slider_img1[0]) == 0) {
-    //   setTimeout(function () {
-    //     slider_comment1_1.fadeIn();
-    //   }, 1000);
-    //   setTimeout(function () {
-    //     slider_comment1_2.fadeIn();
-    //   }, 2000);
-    // }
-
-    // if(this.getRelativeLeft(slider_img2)==0){
-    //   setTimeout(function(){
-    //     slider_comment1_2.fadeIn();
-    //   },2000)
-    // }
+    // comment fadeIn
+    setTimeout(function () {
+      $(".slider_comment1-1").fadeIn();
+    }, 1000);
+    setTimeout(function () {
+      $(".slider_comment1-2").fadeIn();
+    }, 2000);
   }
 
-  //컴포넌트가 변경되었을 때 fadeIn 되어야 함
   componentDidUpdate() {
-    var _windowWidth = $(window).width();
-    var slider_img1 = document.getElementById("slider_Img1");
-    var relativeLeft = slider_img1.getBoundingClientRect().left;
-    var relativeRight = slider_img1.getBoundingClientRect().right;
-    //fadeIn된 div 다시 사라지게하기
-    if (relativeRight <= 0 || relativeLeft > _windowWidth) {
-      $(".slider_comment1-1").css("display", "none");
-      $(".slider_comment1-2").css("display", "none");
-    }
-
-    //다시 fadeIn
-    if (relativeLeft === 0) {
-      console.log("if문 다시 실행시작");
-      setTimeout(function () {
-        $(".slider_comment1-1").fadeIn();
-      }, 1000);
-      setTimeout(function () {
-        $(".slider_comment1-2").fadeIn();
-      }, 2000);
-      console.log("if문 내부. if문 다시 실행완료");
-    }
-    // $(document).ready(function () {
-    //   setTimeout(function () {
-    //     $(".slider_comment1-1").fadeIn();
-    //   }, 1000);
-    //   setTimeout(function () {
-    //     $(".slider_comment1-2").fadeIn();
-    //   }, 2000);
-    // });
+    console.log("in CDUpdate");
   }
 
   // //API 가져오는 함수
@@ -125,8 +55,37 @@ class Home extends Component {
       speed: 1000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: false,
-      //   autoplaySpeed: 4000,
+      autoplay: true,
+      afterChange: (index) => {
+        if (index === 0) {
+          /* in slider_Wrapper 1 */
+          // slider_Wrapper 1
+          setTimeout(function () {
+            $(".slider_comment1-1").stop(true, true).fadeIn();
+          }, 500);
+          setTimeout(function () {
+            $(".slider_comment1-2").stop(true, true).fadeIn();
+          }, 1500);
+
+          // slider_Wrapper 2
+          $(".slider_comment2-1").hide();
+          $(".slider_comment2-2").hide();
+        } else if (index === 1) {
+          /* in slider_Wrapper 2 */
+          // slider_Wrapper 1
+          $(".slider_comment1-1").hide();
+          $(".slider_comment1-2").hide();
+
+          // slider_Wrapper 2
+          setTimeout(function () {
+            $(".slider_comment2-1").stop(true, true).fadeIn();
+          }, 500);
+          setTimeout(function () {
+            $(".slider_comment2-2").stop(true, true).fadeIn();
+          }, 1500);
+        }
+      },
+      autoplaySpeed: 4000,
     };
     return (
       <div id="HomePage">
@@ -157,7 +116,6 @@ class Home extends Component {
             </div>
           </div>
         </Slider>
-        {/* <p>{this.state.message} </p> */}
       </div>
     );
   }
