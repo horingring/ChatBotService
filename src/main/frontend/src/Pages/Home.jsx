@@ -85,7 +85,7 @@ class Home extends Component {
           }, 1500);
         }
       },
-      autoplaySpeed: 4000,
+      autoplaySpeed: 5000,
     };
     return (
       <div id="HomePage">

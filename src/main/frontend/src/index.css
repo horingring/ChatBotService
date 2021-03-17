@@ -107,6 +107,9 @@ body,
 /* #App{
   position: relative;
 } */
+.ReactRouterDom_Link {
+  margin: 0 15px;
+}
 
 .ReactRouterDom_Link:hover {
   text-decoration: none;
@@ -183,6 +186,7 @@ body,
   font-size: 18px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .Menu:hover {
   color: white;

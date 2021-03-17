@@ -13,7 +13,7 @@ const Footer = () => {
               <td>JLN (주형진, 이경호, 남상범)</td>
             </tr>
             <tr>
-              <td>Github Adress</td>
+              <td>Github Address</td>
               <td>
                 <a href="https://github.com/MCJoo/ChatBotService">
                   https://github.com/MCJoo/ChatBotService
