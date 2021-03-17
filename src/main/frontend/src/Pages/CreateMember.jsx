@@ -57,8 +57,9 @@ class CreateMember extends React.Component {
   render() {
     return (
       //0905, 경호, 레이아웃 문제 해결 및 다듬기
-      <div className="createMember-container">
+      <div className="Member-Container Body-Container">
         <h1>회원가입</h1>
+        <hr></hr>
         <Form onSubmit={this.handleSubmit} className="createMember_form">
           <Form.Group controlId="user_id">
             <Form.Label>ID</Form.Label>

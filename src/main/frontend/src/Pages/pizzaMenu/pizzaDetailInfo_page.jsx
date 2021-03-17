@@ -146,7 +146,7 @@ class pizzaDetailInfo_page extends Component {
     // console.log("price_sum 확인용 : " + _price_sum);
 
     return (
-      <div className="pizzaDetailInfo_page paddingForNavBar">
+      <div className="pizzaDetailInfo_page Body-Container">
         <div className="pizzaOutlineNOrder_box">
           <div className="pizzaOutline_box">
             <img src={pizza_detailInfo.p_img} alt={pizza_detailInfo.p_name} />
