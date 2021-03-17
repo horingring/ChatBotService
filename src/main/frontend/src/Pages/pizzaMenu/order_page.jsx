@@ -194,7 +194,7 @@ class order_page extends Component {
 
   render() {
     return (
-      <div className="order_page paddingForNavBar">
+      <div className="order_page Body-Container">
         <h3 className="article_title">주문하기/결제</h3>
         <article>
           <h5>주문정보</h5>

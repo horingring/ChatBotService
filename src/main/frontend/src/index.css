@@ -107,6 +107,9 @@ body,
 /* #App{
   position: relative;
 } */
+.ReactRouterDom_Link {
+  margin: 0 15px;
+}
 
 .ReactRouterDom_Link:hover {
   text-decoration: none;
@@ -120,7 +123,7 @@ body,
 
 #Header {
   width: 100%;
-  height: 16vh;
+  height: 15vh;
   position: fixed;
   z-index: 300;
   top: 0;
@@ -155,7 +158,7 @@ body,
 .Header_Navbar {
   position: relative;
   width: 100%;
-  height: 90%;
+  height: 100%;
   background-color: none;
 }
 .Header_Navbar > .mask_black {
@@ -183,6 +186,7 @@ body,
   font-size: 18px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .Menu:hover {
   color: white;
@@ -215,11 +219,6 @@ body,
 
 .navBar_right div {
   font-size: 16px;
-}
-
-.paddingForNavBar {
-  margin-top: 50px;
-  padding: 16vh 8vw;
 }
 
 #Menu_ChatBotService {
@@ -277,6 +276,13 @@ body,
 
 /* ---------- Body 내부 ---------- */
 /* Body 공통 */
+.Body-Container {
+  margin: 15vh 0;
+  padding: 5vh 10vw;
+  box-sizing: border-box;
+  min-height: 85vh;
+}
+
 .Article_Container {
   width: 100%;
   margin: 140px 0;
@@ -402,6 +408,7 @@ body,
   left: 55%;
 }
 .slider_comment2-1 {
+  display: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
   z-index: 1;
@@ -415,6 +422,7 @@ body,
 }
 
 .slider_comment2-2 {
+  display: none;
   writing-mode: vertical-rl;
   text-orientation: upright;
   word-spacing: -10px;
@@ -753,9 +761,59 @@ body,
 }
 
 /* 회원가입 */
-.createMember-container {
-  margin: 16vh 0;
-  padding: 50px 100px;
+.Member-Container h1 {
+  text-align: center;
+  margin-bottom: 8vh;
+}
+
+.createMember_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+.createMember_form .form-group {
+  width: 40%;
+  margin-bottom: 5vh;
+}
+.createMember_form .form-group:nth-last-child(2) {
+  margin-bottom: 10vh;
+}
+
+.createMember_form button {
+  width: 10vw;
+}
+
+/* 나의정보 */
+.myPage_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+}
+.myPage_form > .form-row,
+.myPage_form > .form-group {
+  width: 60%;
+}
+.myPage_form > .form-row {
+  display: flex;
+  justify-content: space-between;
+}
+.myPage_form > .form-row > .form-group {
+  width: 45%;
+}
+
+.myPage_form .form-group {
+  margin-bottom: 5vh;
+}
+.myPage_form > .form-group:nth-last-child(2) {
+  margin-bottom: 10vh;
+}
+
+.myPage_form button {
+  width: 10vw;
 }
 
 /* 피자리스트 */
@@ -826,7 +884,6 @@ body,
 
 .pizzaOutlineNOrder_box {
   display: flex;
-  margin-top: 50px;
 }
 
 .pizzaOutline_box img {
@@ -872,8 +929,7 @@ body,
 
 /* 주문 & 주문완료 & 장바구니 공통 */
 .order_page > h3,
-.orderComplete_page > h3,
-.basketList_page > h3 {
+.orderComplete_page > h3 {
   border-bottom: 1px solid lightgray;
 }
 
@@ -1027,3 +1083,6 @@ body,
 }
 
 /* 장바구니 */
+.basketList_page article {
+  margin: 10vh 0;
+}

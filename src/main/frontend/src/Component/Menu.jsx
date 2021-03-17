@@ -36,28 +36,15 @@ class Menu extends Component {
           <div className="mask_black"></div>
           <div className="navBar_left">
             <Link to="/">
-              <img
-                className="Header_logo"
-                style={{ width: "50px", height: "50px" }}
-                src={logo}
-                alt="yrb 로고"
-              />
+              <img className="Header_logo" src={logo} alt="yrb 로고" />
             </Link>
             <div className="Menu_Container">
-              <Link
-                to="/PizzaMenu"
-                className="ReactRouterDom_Link"
-                style={{ margin: "0 15px" }}
-              >
+              <Link to="/PizzaMenu" className="ReactRouterDom_Link">
                 <div className="Menu_MemberIntro Menu">
                   Menu&nbsp;&amp;&nbsp;Order
                 </div>
               </Link>
-              <Link
-                to="/ChatBotIntro"
-                className="ReactRouterDom_Link"
-                style={{ margin: "0 15px" }}
-              >
+              <div className="ReactRouterDom_Link">
                 <div className="Menu" id="Menu_ChatBotService">
                   ChatBot Service
                   <div
@@ -73,7 +60,10 @@ class Menu extends Component {
                           <div className="mask_black"></div>
                           <div className="dropDown_div">
                             <div>
-                              <img src={lightbulbLogo} alt="챗봇 인트로 로고"></img>
+                              <img
+                                src={lightbulbLogo}
+                                alt="챗봇 인트로 로고"
+                              ></img>
                             </div>
                             <div style={{ height: "30px", marginTop: "4px" }}>
                               <span style={{ fontSize: "20px" }}>
@@ -91,7 +81,10 @@ class Menu extends Component {
                           <div className="mask_black"></div>
                           <div className="dropDown_div">
                             <div>
-                              <img src={networkLogo} alt="챗봇 인트로 로고"></img>
+                              <img
+                                src={networkLogo}
+                                alt="챗봇 인트로 로고"
+                              ></img>
                             </div>
                             <div style={{ height: "30px", marginTop: "4px" }}>
                               <span style={{ fontSize: "20px" }}>
@@ -104,12 +97,8 @@ class Menu extends Component {
                     </ul>
                   </div>
                 </div>
-              </Link>
-              <Link
-                to="/MemberIntro"
-                className="ReactRouterDom_Link"
-                style={{ margin: "0 15px" }}
-              >
+              </div>
+              <Link to="/MemberIntro" className="ReactRouterDom_Link">
                 <div className="Menu_MemberIntro Menu">Member Introduction</div>
               </Link>
             </div>
@@ -117,7 +106,7 @@ class Menu extends Component {
 
           <div className="navBar_right">
             <Link to="/CreateMember">
-              <div className="header_login_btn Menu">로그인</div>
+              <div className="header_login_btn Menu">회원가입</div>
             </Link>
             <Link to="/MyPage">
               <div className="header_myInfo_btn Menu">나의정보</div>

@@ -10,7 +10,7 @@ class orderComplete_page extends Component {
 
   render() {
     return (
-      <div className="orderComplete_page paddingForNavBar">
+      <div className="orderComplete_page Body-Container">
         <h3 className="article_title">주문완료</h3>
         <article>
           <p>주문이 완료되었습니다!</p>

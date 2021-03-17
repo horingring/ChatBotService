@@ -43,8 +43,9 @@ class basketList_page extends Component {
   }
   render() {
     return (
-      <div className="basketList_page paddingForNavBar">
+      <div className="basketList_page Body-Container">
         <h3 className="article_title">장바구니</h3>
+        <hr></hr>
         <article>
           <table>
             <tbody>
