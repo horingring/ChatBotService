@@ -38,10 +38,13 @@ class CreateMember extends React.Component {
       })
       .then(function (response) {
         console.log(response);
+        this.props.history.push("/");
       })
       .catch(function (error) {
         console.log(error);
       });
+    // 원래 axios를 통해 서버통신 성공 시 실행되어야 할 코드
+    this.props.history.push("/");
   };
 
   // getApi = () => {
@@ -56,7 +59,7 @@ class CreateMember extends React.Component {
       //0905, 경호, 레이아웃 문제 해결 및 다듬기
       <div className="createMember-container">
         <h1>회원가입</h1>
-        <Form onSubmit={this.handleSubmit} style={{ width: "600px" }}>
+        <Form onSubmit={this.handleSubmit} className="createMember_form">
           <Form.Group controlId="user_id">
             <Form.Label>ID</Form.Label>
             <Form.Control
