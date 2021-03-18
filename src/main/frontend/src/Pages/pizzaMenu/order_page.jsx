@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originPizza from "../../img/pizza2.jpg";
-import originalPizza from "../../img/pizza.jpg";
+import originalPizza from "../../img/pizza/originalPizza.jpg";
+import vegetablePizza from "../../img/pizza/vegetablePizza.jpg";
+import combinationPizza from "../../img/pizza/combinationPizza.jpg";
+import pepperoniPizza from "../../img/pizza/pepperoniPizza.jpg";
+import bulgogiPizza from "../../img/pizza/bulgogiPizza.jpg";
 
 class order_page extends Component {
   constructor(props) {
@@ -15,31 +18,31 @@ class order_page extends Component {
           p_idx: 1,
           p_name: "Original Pizza",
           p_price: { p_L_price: 26000, p_M_price: 21000 },
-          p_img: originPizza,
+          p_img: originalPizza,
         },
         {
           p_idx: 2,
           p_name: "Vegetable Pizza",
           p_price: { p_L_price: 28000, p_M_price: 23000 },
-          p_img: originalPizza,
+          p_img: vegetablePizza,
         },
         {
           p_idx: 3,
           p_name: "Combination Pizza",
           p_price: { p_L_price: 30000, p_M_price: 25000 },
-          p_img: originPizza,
+          p_img: combinationPizza,
         },
         {
           p_idx: 4,
           p_name: "Pepperoni Pizza",
           p_price: { p_L_price: 29000, p_M_price: 24000 },
-          p_img: originalPizza,
+          p_img: pepperoniPizza,
         },
         {
           p_idx: 5,
           p_name: "Bulgogi Pizza",
           p_price: { p_L_price: 31000, p_M_price: 26000 },
-          p_img: originPizza,
+          p_img: bulgogiPizza,
         },
       ],
       max_order_idx: 1,
@@ -48,7 +51,7 @@ class order_page extends Component {
         {
           order_idx: 0,
           p_name: "",
-          p_img: originPizza,
+          p_img: originalPizza,
           p_size: "medium",
           p_dough: "origin",
           p_cheese: "mozzarella",

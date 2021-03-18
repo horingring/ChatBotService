@@ -357,7 +357,7 @@ body,
 }
 #slider_Img1 {
   position: relative;
-  background-image: url("./img/pizza2.jpg");
+  background-image: url("./img/pizza/combinationPizza.jpg");
   background-position-x: left;
   background-position-y: bottom;
 }

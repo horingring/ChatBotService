@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originPizza from "../../img/pizza2.jpg";
+import originalPizza from "../../img/pizza/originalPizza.jpg";
 
 class orderComplete_page extends Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ class orderComplete_page extends Component {
               </tr>
               <tr>
                 <td>
-                  <img src={originPizza} alt="오리지널 피자" />
+                  <img src={originalPizza} alt="오리지널 피자" />
                 </td>
                 <td>오리지널 피자</td>
                 <td>21,000원</td>
