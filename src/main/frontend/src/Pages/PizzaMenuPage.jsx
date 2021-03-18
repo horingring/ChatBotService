@@ -46,36 +46,54 @@ class PizzaMenuPage extends Component {
     };
   }
   render() {
-    var pizza_list_data = this.state.pizza_list;
-    var pizza_list = (n) => {
+    var getPizzaLinkByIdx = (idx) => {
+      var pizza_list_data = this.state.pizza_list;
+
+      /* 210318, 경호
+        idx number를 통해 해당 pizza의 정보를 가져오는 함수
+        getPizzaDataByIdx는 재활용 가능.
+      */
+      var getPizzaDataByIdx = (idx) => {
+        var pizzaData;
+        for (var i = 0; i < pizza_list_data.length; i++) {
+          if (idx === pizza_list_data[i].p_idx) {
+            pizzaData = pizza_list_data[i];
+            break;
+          }
+        }
+        return pizzaData;
+      };
+
+      var pizzaData = getPizzaDataByIdx(idx);
+
       return (
         <Link
-          to={`/pizzaDetailInfo_page/${pizza_list_data[n].p_idx}`}
+          to={`/pizzaDetailInfo_page/${pizzaData.p_idx}`}
           className="pizzaMenuPage_menu_link"
         >
           <div className="pizzaMenuPage_menu">
             <div className="pizzaMenuPage_img-wrapper">
               <img
                 className="pizzaMenuPage_img"
-                src={pizza_list_data[n].p_img}
-                alt={pizza_list_data[n].p_name}
+                src={pizzaData.p_img}
+                alt={pizzaData.p_name}
               />
             </div>
             <div className="pizzaMenuPage_pizzaName-box">
               <span className="pizzaMenuPage_pizzaName">
-                {pizza_list_data[n].p_name}
+                {pizzaData.p_name}
               </span>
               <div className="pizzaMenuPage_sizeNprice-box">
                 <div className="pizzaMenuPage_sizeNprice">
-                  <span className="size_icon">M&nbsp;</span>
+                  <span className="size_icon">M</span>
                   <span className="pizzaPrice">
-                    {pizza_list_data[n].p_price.p_M_price}
+                    {pizzaData.p_price.p_M_price}
                   </span>
                 </div>
                 <div className="pizzaMenuPage_sizeNprice">
-                  <span className="size_icon">L&nbsp;</span>
+                  <span className="size_icon">L</span>
                   <span className="pizzaPrice">
-                    {pizza_list_data[n].p_price.p_L_price}
+                    {pizzaData.p_price.p_L_price}
                   </span>
                 </div>
               </div>
@@ -101,11 +119,11 @@ class PizzaMenuPage extends Component {
               <div className="pizzaMenuPage_quickOrder">빠른 주문</div>
             </div>
             <div className="pizzaMenuPage_list">
-              {pizza_list(0)}
-              {pizza_list(1)}
-              {pizza_list(2)}
-              {pizza_list(3)}
-              {pizza_list(4)}
+              {getPizzaLinkByIdx(1)}
+              {getPizzaLinkByIdx(2)}
+              {getPizzaLinkByIdx(3)}
+              {getPizzaLinkByIdx(4)}
+              {getPizzaLinkByIdx(5)}
             </div>
           </div>
         </article>
