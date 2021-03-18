@@ -35,7 +35,7 @@ class ChatBotDemo extends Component {
             <p>챗봇 데모 페이지입니다.</p>
           </div>
         </div>
-        <article className="Article_Container">
+        <article className="Article-Container">
           <h2 className="ContentTitle article_title">ChatBotDemo</h2>
           <div id="ChatBotDemoMain">
             <ChatBotChatting

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originPizza from "../../img/pizza2.jpg";
-import originalPizza from "../../img/pizza.jpg";
+import originalPizza from "../../img/pizza/originalPizza.jpg";
+import vegetablePizza from "../../img/pizza/vegetablePizza.jpg";
+import combinationPizza from "../../img/pizza/combinationPizza.jpg";
+import pepperoniPizza from "../../img/pizza/pepperoniPizza.jpg";
+import bulgogiPizza from "../../img/pizza/bulgogiPizza.jpg";
 import axios from "axios";
 
 class order_page2 extends Component {
@@ -16,40 +19,40 @@ class order_page2 extends Component {
           p_idx: 1,
           p_name: "Original Pizza",
           p_price: { p_L_price: 26000, p_M_price: 21000 },
-          p_img: originPizza,
+          p_img: originalPizza,
         },
         {
           p_idx: 2,
           p_name: "Vegetable Pizza",
           p_price: { p_L_price: 28000, p_M_price: 23000 },
-          p_img: originalPizza,
+          p_img: vegetablePizza,
         },
         {
           p_idx: 3,
           p_name: "Combination Pizza",
           p_price: { p_L_price: 30000, p_M_price: 25000 },
-          p_img: originPizza,
+          p_img: combinationPizza,
         },
         {
           p_idx: 4,
           p_name: "Pepperoni Pizza",
           p_price: { p_L_price: 29000, p_M_price: 24000 },
-          p_img: originalPizza,
+          p_img: pepperoniPizza,
         },
         {
           p_idx: 5,
           p_name: "Bulgogi Pizza",
           p_price: { p_L_price: 31000, p_M_price: 26000 },
-          p_img: originPizza,
+          p_img: bulgogiPizza,
         },
       ],
       max_order_idx: 1,
-      //원래 order_ingo는 리스트(list)여야 함. 왜냐하면 장바구니에 상품이 여러 가지 있을 수 있기때문. 하지만 편의상 하나의 객체로 지정함.
+      //원래 order_info는 리스트(list)여야 함. 왜냐하면 장바구니에 상품이 여러 가지 있을 수 있기때문. 하지만 편의상 하나의 객체로 지정함.
       order_info: [
         {
           order_idx: 0,
           p_name: "",
-          p_img: originPizza,
+          p_img: originalPizza,
           p_size: "medium",
           p_dough: "origin",
           p_cheese: "mozzarella",

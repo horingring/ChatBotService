@@ -283,22 +283,22 @@ body,
   min-height: 85vh;
 }
 
-.Article_Container {
+.Article-Container {
   width: 100%;
   margin: 140px 0;
 }
 @media screen and (min-width: 1025px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 15%;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 10%;
   }
 }
 @media screen and (max-width: 768px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 5%;
   }
 }
@@ -357,7 +357,7 @@ body,
 }
 #slider_Img1 {
   position: relative;
-  background-image: url("./img/pizza2.jpg");
+  background-image: url("./img/pizza/combinationPizza.jpg");
   background-position-x: left;
   background-position-y: bottom;
 }
@@ -494,7 +494,7 @@ body,
   background-attachment: fixed;
 }
 
-.introImg_pizzaMenu {
+.introImg_pizzaMenuPage {
   background-image: url("./img/pizza_intro.jpg");
   background-size: 100%;
   background-position-x: center;
@@ -507,7 +507,7 @@ body,
   height: auto;
 }
 
-#ChatBotIntroPage .Article_Container .xyCenter {
+#ChatBotIntroPage .Article-Container .xyCenter {
   position: relative;
 }
 
@@ -817,64 +817,56 @@ body,
 }
 
 /* 피자리스트 */
-.pizzaMenu__main {
+.pizzaMenuPage_main {
   width: 100%;
-  height: 600px;
-  display: flex;
-  flex-direction: row;
 }
 
-.pizzaMenu__pizzaGrade {
+.pizzaMenuPage_pizzaGrade {
   width: fit-content;
   border-bottom: 5px solid #343a40;
 }
 
-.pizzaMenu__list {
+.pizzaMenuPage_list {
   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5vw 3vw;
 }
 
-.pizzaMenu__row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.pizzaMenu__row .pizzaMenu__menu__link {
+.pizzaMenuPage_list .pizzaMenuPage_menu_link {
   color: black;
-  width: 30%;
+  transition: 0.5s transform;
 }
-
-.pizzaMenu__row .pizzaMenu__menu__link:hover {
+.pizzaMenuPage_list .pizzaMenuPage_menu_link:hover {
   text-decoration: none;
-  color: black;
   font-weight: 500;
+  transform: scale(1.05);
 }
 
-.pizzaMenu__menu__link:nth-last-child(1):hover {
-  cursor: default;
-}
-
-.pizzaMenu__menu {
+.pizzaMenuPage_menu {
   width: 100%;
   height: auto;
 }
 
-.pizzaMenu__img {
+.pizzaMenuPage_img {
   width: 100%;
   height: inherit;
+  border-radius: 10px;
+  margin-bottom: 1vw;
 }
 
-.pizzaMenu__pizzaName {
-  width: 300px;
+.pizzaMenuPage_pizzaName {
 }
 
-.pizzaMenu__sizeNprice__box {
+.pizzaMenuPage_sizeNprice-box {
   display: flex;
 }
-
-.pizzaMenu__sizeNprice__box .pizzaMenu__sizeNprice {
-  margin-right: 25%;
+.pizzaMenuPage_sizeNprice .size_icon {
+  margin-right: 1vw;
+}
+.pizzaMenuPage_sizeNprice-box .pizzaMenuPage_sizeNprice {
+  flex-basis: 0;
+  flex-grow: 1;
 }
 
 /* 피자상세정보 & 주문 */

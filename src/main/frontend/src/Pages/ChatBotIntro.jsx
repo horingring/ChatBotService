@@ -12,7 +12,7 @@ const ChatBotIntro = () => {
           <p>챗봇의 간단한 사용예시를 확인하실 수 있습니다.</p>
         </div>
       </div>
-      <article className="Article_Container">
+      <article className="Article-Container">
         <div className="xyCenter">
           <div className="button_label">Go To&nbsp;→&nbsp;</div>
           <Link to="/ChatBotDemo" className="button ReactRouterDom_Link">

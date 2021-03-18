@@ -39,7 +39,7 @@ class Menu extends Component {
               <img className="Header_logo" src={logo} alt="yrb 로고" />
             </Link>
             <div className="Menu_Container">
-              <Link to="/PizzaMenu" className="ReactRouterDom_Link">
+              <Link to="/PizzaMenuPage" className="ReactRouterDom_Link">
                 <div className="Menu_MemberIntro Menu">
                   Menu&nbsp;&amp;&nbsp;Order
                 </div>
