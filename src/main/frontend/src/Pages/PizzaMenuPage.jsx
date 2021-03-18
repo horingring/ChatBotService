@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import originalPizza from "../img/pizza.jpg";
 import originPizza from "../img/pizza2.jpg";
 
-class PizzaMenu extends Component {
+class PizzaMenuPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,29 +48,29 @@ class PizzaMenu extends Component {
       return (
         <Link
           to={`/pizzaDetailInfo_page/${pizza_list_data[n].p_idx}`}
-          className="pizzaMenu__menu__link"
+          className="pizzaMenuPage_menu_link"
         >
-          <div className="pizzaMenu__menu">
-            <div className="pizzaMenu__img__wrapper">
+          <div className="pizzaMenuPage_menu">
+            <div className="pizzaMenuPage_img_wrapper">
               <img
-                className="pizzaMenu__img"
+                className="pizzaMenuPage_img"
                 src={pizza_list_data[n].p_img}
                 alt={pizza_list_data[n].p_name}
               />
             </div>
-            <div className="pizzaMenu__pizzaName__box">
-              <span className="pizzaMenu__pizzaName">
+            <div className="pizzaMenuPage_pizzaName_box">
+              <span className="pizzaMenuPage_pizzaName">
                 {pizza_list_data[n].p_name}
               </span>
-              <div className="pizzaMenu__sizeNprice__box">
-                <div className="pizzaMenu__sizeNprice">
-                  <span className="size__icon">M&nbsp;</span>
+              <div className="pizzaMenuPage_sizeNprice_box">
+                <div className="pizzaMenuPage_sizeNprice">
+                  <span className="size_icon">M&nbsp;</span>
                   <span className="pizzaPrice">
                     {pizza_list_data[n].p_price.p_M_price}
                   </span>
                 </div>
-                <div className="pizzaMenu__sizeNprice">
-                  <span className="size__icon">L&nbsp;</span>
+                <div className="pizzaMenuPage_sizeNprice">
+                  <span className="size_icon">L&nbsp;</span>
                   <span className="pizzaPrice">
                     {pizza_list_data[n].p_price.p_L_price}
                   </span>
@@ -83,27 +83,27 @@ class PizzaMenu extends Component {
     };
 
     return (
-      <div className="pizzaMenu__page">
-        <div className="IntroImg xyCenter introImg_pizzaMenu">
+      <div className="pizzaMenuPage">
+        <div className="IntroImg xyCenter introImg_pizzaMenuPage">
           <div className="xyCenter">
             <h1>Pizza Menu</h1>
             <p>피자 메뉴 페이지입니다.</p>
           </div>
         </div>
-        <article className="Article_Container">
+        <article className="Article-Container">
           <h2 className="ContentTitle article_title">Pizza Menu</h2>
-          <div id="pizzaMenu__main">
-            <div className="pizzaMenu__header">
-              <h3 className="pizzaMenu__pizzaGrade">Classic</h3>
-              <div className="pizzaMenu__quickOrder">빠른 주문</div>
+          <div className="pizzaMenuPage_main">
+            <div className="pizzaMenuPage_header">
+              <h3 className="pizzaMenuPage_pizzaGrade">Classic</h3>
+              <div className="pizzaMenuPage_quickOrder">빠른 주문</div>
             </div>
-            <div className="pizzaMenu__list">
-              <div className="pizzaMenu__row">
+            <div className="pizzaMenuPage_list">
+              <div className="pizzaMenuPage_row">
                 {pizza_list(0)}
                 {pizza_list(1)}
                 {pizza_list(2)}
               </div>
-              <div className="pizzaMenu__row">
+              <div className="pizzaMenuPage_row">
                 {pizza_list(3)}
                 {pizza_list(4)}
                 <Link
@@ -111,11 +111,11 @@ class PizzaMenu extends Component {
                   onClick={function (e) {
                     e.preventDefault();
                   }}
-                  className="pizzaMenu__menu__link"
+                  className="pizzaMenuPage_menu_link"
                 >
-                  <div className="pizzaMenu__menu">
-                    <div className="pizzaMenu__img__wrapper"></div>
-                    <div className="pizzaMenu__pizzaName"></div>
+                  <div className="pizzaMenuPage_menu">
+                    <div className="pizzaMenuPage_img_wrapper"></div>
+                    <div className="pizzaMenuPage_pizzaName"></div>
                   </div>
                 </Link>
               </div>
@@ -127,4 +127,4 @@ class PizzaMenu extends Component {
   }
 }
 
-export default PizzaMenu;
+export default PizzaMenuPage;

@@ -6,7 +6,7 @@ import Menu from "../Component/Menu";
 import Footer from "../Component/Footer";
 import CreateMember from "../Pages/CreateMember";
 import MyPage from "../Pages/MyPage";
-import PizzaMenu from "../Pages/PizzaMenu";
+import PizzaMenuPage from "../Pages/PizzaMenuPage";
 import ChatBotIntro from "../Pages/ChatBotIntro";
 import ChatBotDemo from "../Pages/ChatBotDemo";
 import MemberIntro from "../Pages/MemberIntro";
@@ -27,7 +27,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/CreateMember" component={CreateMember} />
         <Route path="/MyPage" component={MyPage} />
-        <Route path="/PizzaMenu" component={PizzaMenu} />
+        <Route path="/PizzaMenuPage" component={PizzaMenuPage} />
         <Route path="/ChatBotIntro" component={ChatBotIntro} />
         <Route path="/ChatBotDemo" component={ChatBotDemo} />
         <Route path="/MemberIntro" component={MemberIntro} />

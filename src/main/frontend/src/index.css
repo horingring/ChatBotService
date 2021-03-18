@@ -494,7 +494,7 @@ body,
   background-attachment: fixed;
 }
 
-.introImg_pizzaMenu {
+.introImg_pizzaMenuPage {
   background-image: url("./img/pizza_intro.jpg");
   background-size: 100%;
   background-position-x: center;
@@ -507,7 +507,7 @@ body,
   height: auto;
 }
 
-#ChatBotIntroPage .Article_Container .xyCenter {
+#ChatBotIntroPage .Article-Container .xyCenter {
   position: relative;
 }
 
@@ -817,63 +817,60 @@ body,
 }
 
 /* 피자리스트 */
-.pizzaMenu__main {
+.pizzaMenuPage_main {
   width: 100%;
-  height: 600px;
-  display: flex;
-  flex-direction: row;
 }
 
-.pizzaMenu__pizzaGrade {
+.pizzaMenuPage_pizzaGrade {
   width: fit-content;
   border-bottom: 5px solid #343a40;
 }
 
-.pizzaMenu__list {
+.pizzaMenuPage_list {
   margin-top: 50px;
 }
 
-.pizzaMenu__row {
+.pizzaMenuPage_row {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
 }
 
-.pizzaMenu__row .pizzaMenu__menu__link {
+.pizzaMenuPage_row .pizzaMenuPage_menu_link {
   color: black;
   width: 30%;
 }
 
-.pizzaMenu__row .pizzaMenu__menu__link:hover {
+.pizzaMenuPage_row .pizzaMenuPage_menu_link:hover {
   text-decoration: none;
   color: black;
   font-weight: 500;
 }
 
-.pizzaMenu__menu__link:nth-last-child(1):hover {
+.pizzaMenuPage_menu_link:nth-last-child(1):hover {
   cursor: default;
 }
 
-.pizzaMenu__menu {
+.pizzaMenuPage_menu {
   width: 100%;
   height: auto;
 }
 
-.pizzaMenu__img {
+.pizzaMenuPage_img {
   width: 100%;
   height: inherit;
 }
 
-.pizzaMenu__pizzaName {
+.pizzaMenuPage_pizzaName {
   width: 300px;
 }
 
-.pizzaMenu__sizeNprice__box {
+.pizzaMenuPage_sizeNprice_box {
   display: flex;
 }
 
-.pizzaMenu__sizeNprice__box .pizzaMenu__sizeNprice {
+.pizzaMenuPage_sizeNprice_box .pizzaMenuPage_sizeNprice {
   margin-right: 25%;
 }
 
