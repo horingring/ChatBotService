@@ -1,53 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originalPizza from "../img/pizza/originalPizza.jpg";
-import vegetablePizza from "../img/pizza/vegetablePizza.jpg";
-import combinationPizza from "../img/pizza/combinationPizza.jpg";
-import pepperoniPizza from "../img/pizza/pepperoniPizza.jpg";
-import bulgogiPizza from "../img/pizza/bulgogiPizza.jpg";
+import { pizza_list } from "../Store/state";
 
 class PizzaMenuPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //피자정보 리스트
-      pizza_list: [
-        {
-          p_idx: 1,
-          p_name: "Original Pizza",
-          p_price: { p_L_price: 26000, p_M_price: 21000 },
-          p_img: originalPizza,
-        },
-        {
-          p_idx: 2,
-          p_name: "Vegetable Pizza",
-          p_price: { p_L_price: 28000, p_M_price: 23000 },
-          p_img: vegetablePizza,
-        },
-        {
-          p_idx: 3,
-          p_name: "Combination Pizza",
-          p_price: { p_L_price: 30000, p_M_price: 25000 },
-          p_img: combinationPizza,
-        },
-        {
-          p_idx: 4,
-          p_name: "Pepperoni Pizza",
-          p_price: { p_L_price: 29000, p_M_price: 24000 },
-          p_img: pepperoniPizza,
-        },
-        {
-          p_idx: 5,
-          p_name: "Bulgogi Pizza",
-          p_price: { p_L_price: 31000, p_M_price: 26000 },
-          p_img: bulgogiPizza,
-        },
-      ],
+      /*
+        피자정보 리스트
+        Store의 역할을 하는 state.js에서 가져옴
+      */
+      pizza_list_obj: pizza_list,
     };
   }
   render() {
     var getPizzaLinkByIdx = (idx) => {
-      var pizza_list_data = this.state.pizza_list;
+      var pizza_list_obj = this.state.pizza_list_obj;
 
       /* 210318, 경호
         idx number를 통해 해당 pizza의 정보를 가져오는 함수
@@ -55,9 +23,9 @@ class PizzaMenuPage extends Component {
       */
       var getPizzaDataByIdx = (idx) => {
         var pizzaData;
-        for (var i = 0; i < pizza_list_data.length; i++) {
-          if (idx === pizza_list_data[i].p_idx) {
-            pizzaData = pizza_list_data[i];
+        for (var pizza in pizza_list_obj) {
+          if (idx === pizza_list_obj[pizza].p_idx) {
+            pizzaData = pizza_list_obj[pizza];
             break;
           }
         }
