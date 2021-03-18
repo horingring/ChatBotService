@@ -835,11 +835,12 @@ body,
 
 .pizzaMenuPage_list .pizzaMenuPage_menu_link {
   color: black;
+  transition: 0.5s transform;
 }
 .pizzaMenuPage_list .pizzaMenuPage_menu_link:hover {
   text-decoration: none;
-  color: black;
   font-weight: 500;
+  transform: scale(1.05);
 }
 
 .pizzaMenuPage_menu {

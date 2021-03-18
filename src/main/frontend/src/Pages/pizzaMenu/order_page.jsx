@@ -46,7 +46,7 @@ class order_page extends Component {
         },
       ],
       max_order_idx: 1,
-      //원래 order_ingo는 리스트(list)여야 함. 왜냐하면 장바구니에 상품이 여러 가지 있을 수 있기때문. 하지만 편의상 하나의 객체로 지정함.
+      //원래 order_info는 리스트(list)여야 함. 왜냐하면 장바구니에 상품이 여러 가지 있을 수 있기때문. 하지만 편의상 하나의 객체로 지정함.
       order_info: [
         {
           order_idx: 0,
