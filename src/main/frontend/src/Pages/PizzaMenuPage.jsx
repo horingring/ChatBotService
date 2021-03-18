@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originalPizza from "../img/pizza.jpg";
-import originPizza from "../img/pizza2.jpg";
+import originalPizza from "../img/pizza/originalPizza.jpg";
+import vegetablePizza from "../img/pizza/vegetablePizza.jpg";
+import combinationPizza from "../img/pizza/combinationPizza.jpg";
+import pepperoniPizza from "../img/pizza/pepperoniPizza.jpg";
+import bulgogiPizza from "../img/pizza/bulgogiPizza.jpg";
 
 class PizzaMenuPage extends Component {
   constructor(props) {
@@ -13,31 +16,31 @@ class PizzaMenuPage extends Component {
           p_idx: 1,
           p_name: "Original Pizza",
           p_price: { p_L_price: 26000, p_M_price: 21000 },
-          p_img: originPizza,
+          p_img: originalPizza,
         },
         {
           p_idx: 2,
           p_name: "Vegetable Pizza",
           p_price: { p_L_price: 28000, p_M_price: 23000 },
-          p_img: originalPizza,
+          p_img: vegetablePizza,
         },
         {
           p_idx: 3,
           p_name: "Combination Pizza",
           p_price: { p_L_price: 30000, p_M_price: 25000 },
-          p_img: originPizza,
+          p_img: combinationPizza,
         },
         {
           p_idx: 4,
           p_name: "Pepperoni Pizza",
           p_price: { p_L_price: 29000, p_M_price: 24000 },
-          p_img: originalPizza,
+          p_img: pepperoniPizza,
         },
         {
           p_idx: 5,
           p_name: "Bulgogi Pizza",
           p_price: { p_L_price: 31000, p_M_price: 26000 },
-          p_img: originPizza,
+          p_img: bulgogiPizza,
         },
       ],
     };
@@ -51,18 +54,18 @@ class PizzaMenuPage extends Component {
           className="pizzaMenuPage_menu_link"
         >
           <div className="pizzaMenuPage_menu">
-            <div className="pizzaMenuPage_img_wrapper">
+            <div className="pizzaMenuPage_img-wrapper">
               <img
                 className="pizzaMenuPage_img"
                 src={pizza_list_data[n].p_img}
                 alt={pizza_list_data[n].p_name}
               />
             </div>
-            <div className="pizzaMenuPage_pizzaName_box">
+            <div className="pizzaMenuPage_pizzaName-box">
               <span className="pizzaMenuPage_pizzaName">
                 {pizza_list_data[n].p_name}
               </span>
-              <div className="pizzaMenuPage_sizeNprice_box">
+              <div className="pizzaMenuPage_sizeNprice-box">
                 <div className="pizzaMenuPage_sizeNprice">
                   <span className="size_icon">M&nbsp;</span>
                   <span className="pizzaPrice">
@@ -98,27 +101,11 @@ class PizzaMenuPage extends Component {
               <div className="pizzaMenuPage_quickOrder">빠른 주문</div>
             </div>
             <div className="pizzaMenuPage_list">
-              <div className="pizzaMenuPage_row">
-                {pizza_list(0)}
-                {pizza_list(1)}
-                {pizza_list(2)}
-              </div>
-              <div className="pizzaMenuPage_row">
-                {pizza_list(3)}
-                {pizza_list(4)}
-                <Link
-                  to="/"
-                  onClick={function (e) {
-                    e.preventDefault();
-                  }}
-                  className="pizzaMenuPage_menu_link"
-                >
-                  <div className="pizzaMenuPage_menu">
-                    <div className="pizzaMenuPage_img_wrapper"></div>
-                    <div className="pizzaMenuPage_pizzaName"></div>
-                  </div>
-                </Link>
-              </div>
+              {pizza_list(0)}
+              {pizza_list(1)}
+              {pizza_list(2)}
+              {pizza_list(3)}
+              {pizza_list(4)}
             </div>
           </div>
         </article>

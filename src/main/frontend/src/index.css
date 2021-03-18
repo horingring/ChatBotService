@@ -828,28 +828,18 @@ body,
 
 .pizzaMenuPage_list {
   margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5vw 3vw;
 }
 
-.pizzaMenuPage_row {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-}
-
-.pizzaMenuPage_row .pizzaMenuPage_menu_link {
+.pizzaMenuPage_list .pizzaMenuPage_menu_link {
   color: black;
-  width: 30%;
 }
-
-.pizzaMenuPage_row .pizzaMenuPage_menu_link:hover {
+.pizzaMenuPage_list .pizzaMenuPage_menu_link:hover {
   text-decoration: none;
   color: black;
   font-weight: 500;
-}
-
-.pizzaMenuPage_menu_link:nth-last-child(1):hover {
-  cursor: default;
 }
 
 .pizzaMenuPage_menu {
@@ -860,18 +850,22 @@ body,
 .pizzaMenuPage_img {
   width: 100%;
   height: inherit;
+  border-radius: 10px;
+  margin-bottom: 1vw;
 }
 
 .pizzaMenuPage_pizzaName {
-  width: 300px;
 }
 
-.pizzaMenuPage_sizeNprice_box {
+.pizzaMenuPage_sizeNprice-box {
   display: flex;
 }
-
-.pizzaMenuPage_sizeNprice_box .pizzaMenuPage_sizeNprice {
-  margin-right: 25%;
+.pizzaMenuPage_sizeNprice .size_icon {
+  margin-right: 1vw;
+}
+.pizzaMenuPage_sizeNprice-box .pizzaMenuPage_sizeNprice {
+  flex-basis: 0;
+  flex-grow: 1;
 }
 
 /* 피자상세정보 & 주문 */
