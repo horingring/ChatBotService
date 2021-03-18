@@ -10,7 +10,7 @@ const MemberIntro = () => {
           <p>멤버 인트로 페이지입니다.</p>
         </div>
       </div>
-      <article className="Article_Container">
+      <article className="Article-Container">
         <h2 className="article_title">MemberIntro</h2>
         <p>안녕</p>
         <p>안녕</p>

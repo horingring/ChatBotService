@@ -283,22 +283,22 @@ body,
   min-height: 85vh;
 }
 
-.Article_Container {
+.Article-Container {
   width: 100%;
   margin: 140px 0;
 }
 @media screen and (min-width: 1025px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 15%;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 10%;
   }
 }
 @media screen and (max-width: 768px) {
-  .Article_Container {
+  .Article-Container {
     padding: 0 5%;
   }
 }
