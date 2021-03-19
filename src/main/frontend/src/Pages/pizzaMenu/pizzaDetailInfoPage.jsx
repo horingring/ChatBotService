@@ -5,11 +5,24 @@ import vegetablePizza from "../../img/pizza/vegetablePizza.jpg";
 import combinationPizza from "../../img/pizza/combinationPizza.jpg";
 import pepperoniPizza from "../../img/pizza/pepperoniPizza.jpg";
 import bulgogiPizza from "../../img/pizza/bulgogiPizza.jpg";
+import { pizza_list } from "../../Store/state";
+
+var getPizzaDataByIdx = (idx) => {
+  var pizzaData;
+  for (var pizza in pizza_list) {
+    if (idx === pizza_list[pizza].p_idx) {
+      pizzaData = pizza_list[pizza];
+      break;
+    }
+  }
+  return pizzaData;
+};
 
 // 0911, 경호, pizzaDatailInfo_page 컴포넌트 뼈대 완성
 class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
+    var props = this.props;
     this.state = {
       //피자정보 리스트
       //0922, 경호, 여기서 state는, Router의 props 전달로 가져온 p_idx를 통해, (axios를 이용하여) 서버로부터 가져온 데이터라고 가정한다.
@@ -46,6 +59,7 @@ class pizzaDetailInfoPage extends Component {
           p_img: bulgogiPizza,
         },
       ],
+      currentPizza: getPizzaDataByIdx(Number(props.match.params.p_idx)),
       currentOrder: {
         selected_size: "medium",
         selected_dough: "origin",
