@@ -10,7 +10,7 @@ import PizzaMenuPage from "../Pages/PizzaMenuPage";
 import ChatBotIntro from "../Pages/ChatBotIntro";
 import ChatBotDemo from "../Pages/ChatBotDemo";
 import MemberIntro from "../Pages/MemberIntro";
-import pizzaDetailInfo_page from "../Pages/pizzaMenu/pizzaDetailInfo_page";
+import pizzaDetailInfoPage from "../Pages/pizzaMenu/pizzaDetailInfoPage";
 import order_page from "../Pages/pizzaMenu/order_page";
 import order_page2 from "../Pages/pizzaMenu/order_page";
 import orderComplete_page from "../Pages/pizzaMenu/orderComplete_page";
@@ -32,8 +32,8 @@ class App extends Component {
         <Route path="/ChatBotDemo" component={ChatBotDemo} />
         <Route path="/MemberIntro" component={MemberIntro} />
         <Route
-          path="/pizzaDetailInfo_page/:p_idx"
-          component={pizzaDetailInfo_page}
+          path="/pizzaDetailInfoPage/:p_idx"
+          component={pizzaDetailInfoPage}
         />
         <Route
           path="/order_page/:p_idx/:p_size/:p_dough/:p_cheese"

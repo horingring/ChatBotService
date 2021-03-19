@@ -7,7 +7,7 @@ import pepperoniPizza from "../../img/pizza/pepperoniPizza.jpg";
 import bulgogiPizza from "../../img/pizza/bulgogiPizza.jpg";
 
 // 0911, 경호, pizzaDatailInfo_page 컴포넌트 뼈대 완성
-class pizzaDetailInfo_page extends Component {
+class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -265,4 +265,4 @@ class pizzaDetailInfo_page extends Component {
   }
 }
 
-export default pizzaDetailInfo_page;
+export default pizzaDetailInfoPage;
