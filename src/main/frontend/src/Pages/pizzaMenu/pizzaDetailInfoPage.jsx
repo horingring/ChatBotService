@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import originalPizza from "../../img/pizza/originalPizza.jpg";
-import vegetablePizza from "../../img/pizza/vegetablePizza.jpg";
-import combinationPizza from "../../img/pizza/combinationPizza.jpg";
-import pepperoniPizza from "../../img/pizza/pepperoniPizza.jpg";
-import bulgogiPizza from "../../img/pizza/bulgogiPizza.jpg";
 import { pizza_list } from "../../Store/state";
 
 var getPizzaDataByIdx = (idx) => {
@@ -24,41 +19,6 @@ class pizzaDetailInfoPage extends Component {
     super(props);
     var props = this.props;
     this.state = {
-      //피자정보 리스트
-      //0922, 경호, 여기서 state는, Router의 props 전달로 가져온 p_idx를 통해, (axios를 이용하여) 서버로부터 가져온 데이터라고 가정한다.
-      //이때 원래대로라면, state에는 해당 p_idx에 일치하는 list만 가져오게 될 것이다. 여기서는 편의상 모든 pizza_list를 가져왔다.
-      pizza_list: [
-        {
-          p_idx: 1,
-          p_name: "Original Pizza",
-          p_price: { p_L_price: 26000, p_M_price: 21000 },
-          p_img: originalPizza,
-        },
-        {
-          p_idx: 2,
-          p_name: "Vegetable Pizza",
-          p_price: { p_L_price: 28000, p_M_price: 23000 },
-          p_img: vegetablePizza,
-        },
-        {
-          p_idx: 3,
-          p_name: "Combination Pizza",
-          p_price: { p_L_price: 30000, p_M_price: 25000 },
-          p_img: combinationPizza,
-        },
-        {
-          p_idx: 4,
-          p_name: "Pepperoni Pizza",
-          p_price: { p_L_price: 29000, p_M_price: 24000 },
-          p_img: pepperoniPizza,
-        },
-        {
-          p_idx: 5,
-          p_name: "Bulgogi Pizza",
-          p_price: { p_L_price: 31000, p_M_price: 26000 },
-          p_img: bulgogiPizza,
-        },
-      ],
       currentPizza: getPizzaDataByIdx(Number(props.match.params.p_idx)),
       currentOrder: {
         selected_size: "medium",
