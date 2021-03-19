@@ -46,8 +46,8 @@ class pizzaDetailInfo_page extends Component {
           p_img: bulgogiPizza,
         },
       ],
-      immediate_order_info: {
-        selected_pizza_size: "medium",
+      currentOrder: {
+        selected_size: "medium",
         selected_dough: "origin",
         selected_cheese: "mozzarella",
         price_sum: 0,
@@ -59,7 +59,7 @@ class pizzaDetailInfo_page extends Component {
     this.getDough_price = this.getDough_price.bind(this);
     this.getCheese_price = this.getCheese_price.bind(this);
     var _price_sum = this.getPrice_sum();
-    this.state.immediate_order_info.price_sum = _price_sum;
+    this.state.currentOrder.price_sum = _price_sum;
     // setState({ price_sum: _price_sum })
   }
 
@@ -90,12 +90,10 @@ class pizzaDetailInfo_page extends Component {
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
   getPizza_size_price() {
     var pizza_size_price = 0;
-    if (this.state.immediate_order_info.selected_pizza_size === "medium") {
+    if (this.state.currentOrder.selected_size === "medium") {
       pizza_size_price = this.getPizza_detailInfoByIdx().p_price.p_M_price;
       return pizza_size_price;
-    } else if (
-      this.state.immediate_order_info.selected_pizza_size === "large"
-    ) {
+    } else if (this.state.currentOrder.selected_size === "large") {
       pizza_size_price = this.getPizza_detailInfoByIdx().p_price.p_L_price;
       return pizza_size_price;
     } else {
@@ -106,11 +104,11 @@ class pizzaDetailInfo_page extends Component {
 
   getDough_price() {
     var dough_price = 0;
-    if (this.state.immediate_order_info.selected_dough === "origin") {
+    if (this.state.currentOrder.selected_dough === "origin") {
       return dough_price;
-    } else if (this.state.immediate_order_info.selected_dough === "thin") {
+    } else if (this.state.currentOrder.selected_dough === "thin") {
       return dough_price + 1000;
-    } else if (this.state.immediate_order_info.selected_dough === "napoli") {
+    } else if (this.state.currentOrder.selected_dough === "napoli") {
       return dough_price + 1500;
     } else {
       alert("피자 도우 가격 오류남");
@@ -119,13 +117,11 @@ class pizzaDetailInfo_page extends Component {
 
   getCheese_price() {
     var cheese_price = 0;
-    if (this.state.immediate_order_info.selected_cheese === "mozzarella") {
+    if (this.state.currentOrder.selected_cheese === "mozzarella") {
       return cheese_price;
-    } else if (this.state.immediate_order_info.selected_cheese === "cheddar") {
+    } else if (this.state.currentOrder.selected_cheese === "cheddar") {
       return cheese_price + 500;
-    } else if (
-      this.state.immediate_order_info.selected_cheese === "gorgonzola"
-    ) {
+    } else if (this.state.currentOrder.selected_cheese === "gorgonzola") {
       return cheese_price + 1000;
     } else {
       alert("피자 치즈 가격 오류남");
@@ -149,35 +145,33 @@ class pizzaDetailInfo_page extends Component {
     // console.log("price_sum 확인용 : " + _price_sum);
 
     return (
-      <div className="pizzaDetailInfo_page Body-Container">
-        <div className="pizzaOutlineNOrder_box">
-          <div className="pizzaOutline_box">
+      <div className="pizzaDetailInfoPage Body-Container">
+        <div className="pizzaOutlineNOrder-box">
+          <div className="pizzaOutline-box">
             <img src={pizza_detailInfo.p_img} alt={pizza_detailInfo.p_name} />
             <div className="pizza_otherImg"></div>
           </div>
-          <div className="pizzaOrder_box">
-            <div className="pizzaOrder_form_box">
+          <div className="pizzaOrder-box">
+            <div className="pizzaOrder_form-box">
               <h4>{pizza_detailInfo.p_name}</h4>
               <form action="/" className="pizzaOrder_form">
                 <label htmlFor="p_size">사이즈 : </label>
                 <select
                   name="p_size"
                   id="p_size"
-                  value={this.state.immediate_order_info.selected_pizza_size}
+                  value={this.state.currentOrder.selected_size}
                   onChange={function (e) {
                     //여기에서 setState를 사용하지 않고 직접 값을 입력한 이유는, 두 번 setState할 시 렌더링이 두 번 되어 값이 내부-외부 값이 일치하지 않았기에,
-                    //먼젓번 selected_pizza_size에 직접 대입을 해주고 두번째에 setState를 이용해 이 때 렌더링 하게 해 주었다.
-                    this.state.immediate_order_info.selected_pizza_size =
-                      e.target.value;
-                    // this.setState({ selected_pizza_size: e.target.value });
+                    //먼젓번 selected_size에 직접 대입을 해주고 두번째에 setState를 이용해 이 때 렌더링 하게 해 주었다.
+                    this.state.currentOrder.selected_size = e.target.value;
+                    // this.setState({ selected_size: e.target.value });
                     var _price_sum = this.getPrice_sum();
-                    var { immediate_order_info } = this.state;
+                    var { currentOrder } = this.state;
                     this.setState({
-                      immediate_order_info: {
-                        selected_pizza_size:
-                          immediate_order_info.selected_pizza_size,
-                        selected_dough: immediate_order_info.selected_dough,
-                        selected_cheese: immediate_order_info.selected_cheese,
+                      currentOrder: {
+                        selected_size: currentOrder.selected_size,
+                        selected_dough: currentOrder.selected_dough,
+                        selected_cheese: currentOrder.selected_cheese,
                         price_sum: _price_sum,
                       },
                     });
@@ -190,19 +184,17 @@ class pizzaDetailInfo_page extends Component {
                 <select
                   name="p_dough"
                   id="p_dough"
-                  value={this.state.immediate_order_info.selected_dough}
+                  value={this.state.currentOrder.selected_dough}
                   onChange={function (e) {
-                    this.state.immediate_order_info.selected_dough =
-                      e.target.value;
+                    this.state.currentOrder.selected_dough = e.target.value;
                     // this.setState({ selected_dough: e.target.value }); 이 setState 대신 위의 것처럼 state에 직접대입하였다.
                     var _price_sum = this.getPrice_sum();
-                    var { immediate_order_info } = this.state;
+                    var { currentOrder } = this.state;
                     this.setState({
-                      immediate_order_info: {
-                        selected_pizza_size:
-                          immediate_order_info.selected_pizza_size,
-                        selected_dough: immediate_order_info.selected_dough,
-                        selected_cheese: immediate_order_info.selected_cheese,
+                      currentOrder: {
+                        selected_size: currentOrder.selected_size,
+                        selected_dough: currentOrder.selected_dough,
+                        selected_cheese: currentOrder.selected_cheese,
                         price_sum: _price_sum,
                       },
                     });
@@ -216,19 +208,17 @@ class pizzaDetailInfo_page extends Component {
                 <select
                   name="p_cheese"
                   id="p_cheese"
-                  value={this.state.immediate_order_info.selected_cheese}
+                  value={this.state.currentOrder.selected_cheese}
                   onChange={function (e) {
-                    this.state.immediate_order_info.selected_cheese =
-                      e.target.value;
+                    this.state.currentOrder.selected_cheese = e.target.value;
                     // this.setState({ selected_cheese: e.target.value }); 이 setState 대신 위의 것처럼 state에 직접대입하였다.
                     var _price_sum = this.getPrice_sum();
-                    var { immediate_order_info } = this.state;
+                    var { currentOrder } = this.state;
                     this.setState({
-                      immediate_order_info: {
-                        selected_pizza_size:
-                          immediate_order_info.selected_pizza_size,
-                        selected_dough: immediate_order_info.selected_dough,
-                        selected_cheese: immediate_order_info.selected_cheese,
+                      currentOrder: {
+                        selected_size: currentOrder.selected_size,
+                        selected_dough: currentOrder.selected_dough,
+                        selected_cheese: currentOrder.selected_cheese,
                         price_sum: _price_sum,
                       },
                     });
@@ -239,30 +229,30 @@ class pizzaDetailInfo_page extends Component {
                   <option value="gorgonzola">고르곤졸라 (+1000원)</option>
                 </select>
               </form>
-              <span className="pizzaOrder_price">{`${this.state.immediate_order_info.price_sum} 원`}</span>
-              <div className="button_box">
+              <span className="pizzaOrder_price">{`${this.state.currentOrder.price_sum} 원`}</span>
+              <div className="button-box">
                 <Link to="/basketList_page">
-                  <div className="button pizzaOrder_shopBasket_btn">
+                  <div className="button pizzaOrder_shopBasket-btn">
                     장바구니
                   </div>
                 </Link>
                 <Link
                   to={function () {
-                    var { immediate_order_info } = this.state;
-                    return `/order_page/${pizza_detailInfo.p_idx}/${immediate_order_info.selected_pizza_size}/${immediate_order_info.selected_dough}/${immediate_order_info.selected_cheese}`;
+                    var { currentOrder } = this.state;
+                    return `/order_page/${pizza_detailInfo.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
                   }.bind(this)}
                 >
-                  <div className="button pizzaOrder_Immediate_btn">
+                  <div className="button pizzaOrder_Immediate-btn">
                     즉시주문
                   </div>
                 </Link>
                 {/* <Link
                   to={function () {
-                    var { immediate_order_info } = this.state;
-                    return `/order_page2/${pizza_detailInfo.p_idx}/${immediate_order_info.selected_pizza_size}/${immediate_order_info.selected_dough}/${immediate_order_info.selected_cheese}`;
+                    var { currentOrder } = this.state;
+                    return `/order_page2/${pizza_detailInfo.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
                   }.bind(this)}
                 >
-                  <div className="button pizzaOrder_Immediate_btn">
+                  <div className="button pizzaOrder_Immediate-btn">
                     즉시주문2
                   </div>
                 </Link> */}

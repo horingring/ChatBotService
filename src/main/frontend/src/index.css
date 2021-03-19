@@ -870,24 +870,24 @@ body,
 }
 
 /* 피자상세정보 & 주문 */
-.pizzaDetailInfo_page {
+.pizzaDetailInfoPage {
   box-sizing: content-box;
 }
 
-.pizzaOutlineNOrder_box {
+.pizzaOutlineNOrder-box {
   display: flex;
 }
 
-.pizzaOutline_box img {
+.pizzaOutline-box img {
   width: 500px;
   height: 300px;
 }
 
-.pizzaOrder_box {
+.pizzaOrder-box {
   margin-left: 100px;
 }
 
-.pizzaOrder_form_box h4 {
+.pizzaOrder_form-box h4 {
   margin-bottom: 30px;
   font-weight: 700;
 }
@@ -905,13 +905,13 @@ body,
   font-size: 22px;
 }
 
-.pizzaOrder_form_box .button_box {
+.pizzaOrder_form-box .button-box {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
 }
 
-.pizzaDetailInfo_page .button {
+.pizzaDetailInfoPage .button {
   color: white;
   font-weight: 600;
   padding: 15px 25px;
