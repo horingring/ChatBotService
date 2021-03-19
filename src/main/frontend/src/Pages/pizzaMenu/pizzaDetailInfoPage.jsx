@@ -17,23 +17,21 @@ var getPizzaDataByIdx = (idx) => {
 class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
-    var props = this.props;
+    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
     this.state = {
-      currentPizza: getPizzaDataByIdx(Number(props.match.params.p_idx)),
+      currentPizza: currentPizza,
       currentOrder: {
         selected_size: "medium",
         selected_dough: "origin",
         selected_cheese: "mozzarella",
-        price_sum: 0,
+        price: currentPizza.p_price.p_M_price,
       },
+      total_price: 0,
     };
     this.getPrice_sum = this.getPrice_sum.bind(this);
     this.getPizza_size_price = this.getPizza_size_price.bind(this);
     this.getDough_price = this.getDough_price.bind(this);
     this.getCheese_price = this.getCheese_price.bind(this);
-    var _price_sum = this.getPrice_sum();
-    this.state.currentOrder.price_sum = _price_sum;
-    // setState({ price_sum: _price_sum })
   }
 
   componentDidMount() {
@@ -42,61 +40,54 @@ class pizzaDetailInfoPage extends Component {
   }
 
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
-  getPizza_size_price() {
+  /*
+    210319, 경호, getPrice_sum(state)
+    : state/prevState 등 state를 매개변수로 한,
+    옵션 선택에 따라 총 금액을 계산하는 함수
+  */
+  getPizza_size_price(state) {
     var pizza_size_price = 0;
-    if (this.state.currentOrder.selected_size === "medium") {
-      pizza_size_price = this.state.currentPizza.p_price.p_M_price;
+    if (state.currentOrder.selected_size === "medium") {
+      pizza_size_price = state.currentPizza.p_price.p_M_price;
       return pizza_size_price;
-    } else if (this.state.currentOrder.selected_size === "large") {
-      pizza_size_price = this.state.currentPizza.p_price.p_L_price;
-      return pizza_size_price;
-    } else {
-      alert("피자 사이즈 가격 오류남");
+    } else if (state.currentOrder.selected_size === "large") {
+      pizza_size_price = state.currentPizza.p_price.p_L_price;
       return pizza_size_price;
     }
   }
 
-  getDough_price() {
+  getDough_price(state) {
     var dough_price = 0;
-    if (this.state.currentOrder.selected_dough === "origin") {
+    if (state.currentOrder.selected_dough === "origin") {
       return dough_price;
-    } else if (this.state.currentOrder.selected_dough === "thin") {
+    } else if (state.currentOrder.selected_dough === "thin") {
       return dough_price + 1000;
-    } else if (this.state.currentOrder.selected_dough === "napoli") {
+    } else if (state.currentOrder.selected_dough === "napoli") {
       return dough_price + 1500;
-    } else {
-      alert("피자 도우 가격 오류남");
     }
   }
 
-  getCheese_price() {
+  getCheese_price(state) {
     var cheese_price = 0;
-    if (this.state.currentOrder.selected_cheese === "mozzarella") {
+    if (state.currentOrder.selected_cheese === "mozzarella") {
       return cheese_price;
-    } else if (this.state.currentOrder.selected_cheese === "cheddar") {
+    } else if (state.currentOrder.selected_cheese === "cheddar") {
       return cheese_price + 500;
-    } else if (this.state.currentOrder.selected_cheese === "gorgonzola") {
+    } else if (state.currentOrder.selected_cheese === "gorgonzola") {
       return cheese_price + 1000;
-    } else {
-      alert("피자 치즈 가격 오류남");
     }
   }
 
-  getPrice_sum() {
+  getPrice_sum(state) {
     var price_sum =
-      this.getPizza_size_price() +
-      this.getDough_price() +
-      this.getCheese_price();
+      this.getPizza_size_price(state) +
+      this.getDough_price(state) +
+      this.getCheese_price(state);
     return price_sum;
   }
 
   render() {
     var currentPizza = this.state.currentPizza;
-    console.log("렌더링 완료");
-    // 아래처럼 _price_sum를 총 금액에 ${_price_sum}로 주면, client 입장에서는 총 금액을 확인할 수 있지만, 내부적으로 state에 값이 입력되지 않는다.
-    // 내가 원하는 것은 <select>의 option선택에 따라 state가 바뀌고, 그 state에 맞춰 금액이 client에서 나타나는 것이다.
-    // var _price_sum = this.getPrice_sum();
-    // console.log("price_sum 확인용 : " + _price_sum);
 
     return (
       <div className="pizzaDetailInfoPage Body-Container">
@@ -115,19 +106,30 @@ class pizzaDetailInfoPage extends Component {
                   id="p_size"
                   value={this.state.currentOrder.selected_size}
                   onChange={function (e) {
-                    //여기에서 setState를 사용하지 않고 직접 값을 입력한 이유는, 두 번 setState할 시 렌더링이 두 번 되어 값이 내부-외부 값이 일치하지 않았기에,
-                    //먼젓번 selected_size에 직접 대입을 해주고 두번째에 setState를 이용해 이 때 렌더링 하게 해 주었다.
-                    this.state.currentOrder.selected_size = e.target.value;
-                    // this.setState({ selected_size: e.target.value });
-                    var _price_sum = this.getPrice_sum();
+                    /*
+                      210319, 경호
+                      : 선택한 옵션, 그에 따른 총 금액을 
+                      state에 적용하는 로직 
+                    */
                     var { currentOrder } = this.state;
+                    // (1) 선택한 옵션 state에 적용
                     this.setState({
                       currentOrder: {
-                        selected_size: currentOrder.selected_size,
-                        selected_dough: currentOrder.selected_dough,
-                        selected_cheese: currentOrder.selected_cheese,
-                        price_sum: _price_sum,
+                        ...currentOrder,
+                        selected_size: e.target.value,
                       },
+                    });
+                    // (2) 변경된 옵션 state를 받아
+                    // 총 금액 계산하여 다시 state에 적용
+                    this.setState((prevState) => {
+                      var _price = this.getPrice_sum(prevState);
+                      var { currentOrder } = prevState;
+                      return {
+                        currentOrder: {
+                          ...currentOrder,
+                          price: _price,
+                        },
+                      };
                     });
                   }.bind(this)}
                 >
@@ -140,17 +142,22 @@ class pizzaDetailInfoPage extends Component {
                   id="p_dough"
                   value={this.state.currentOrder.selected_dough}
                   onChange={function (e) {
-                    this.state.currentOrder.selected_dough = e.target.value;
-                    // this.setState({ selected_dough: e.target.value }); 이 setState 대신 위의 것처럼 state에 직접대입하였다.
-                    var _price_sum = this.getPrice_sum();
                     var { currentOrder } = this.state;
                     this.setState({
                       currentOrder: {
-                        selected_size: currentOrder.selected_size,
-                        selected_dough: currentOrder.selected_dough,
-                        selected_cheese: currentOrder.selected_cheese,
-                        price_sum: _price_sum,
+                        ...currentOrder,
+                        selected_dough: e.target.value,
                       },
+                    });
+                    this.setState((prevState) => {
+                      var _price = this.getPrice_sum(prevState);
+                      var { currentOrder } = prevState;
+                      return {
+                        currentOrder: {
+                          ...currentOrder,
+                          price: _price,
+                        },
+                      };
                     });
                   }.bind(this)}
                 >
@@ -164,17 +171,22 @@ class pizzaDetailInfoPage extends Component {
                   id="p_cheese"
                   value={this.state.currentOrder.selected_cheese}
                   onChange={function (e) {
-                    this.state.currentOrder.selected_cheese = e.target.value;
-                    // this.setState({ selected_cheese: e.target.value }); 이 setState 대신 위의 것처럼 state에 직접대입하였다.
-                    var _price_sum = this.getPrice_sum();
                     var { currentOrder } = this.state;
                     this.setState({
                       currentOrder: {
-                        selected_size: currentOrder.selected_size,
-                        selected_dough: currentOrder.selected_dough,
-                        selected_cheese: currentOrder.selected_cheese,
-                        price_sum: _price_sum,
+                        ...currentOrder,
+                        selected_cheese: e.target.value,
                       },
+                    });
+                    this.setState((prevState) => {
+                      var _price = this.getPrice_sum(prevState);
+                      var { currentOrder } = prevState;
+                      return {
+                        currentOrder: {
+                          ...currentOrder,
+                          price: _price,
+                        },
+                      };
                     });
                   }.bind(this)}
                 >
@@ -183,7 +195,7 @@ class pizzaDetailInfoPage extends Component {
                   <option value="gorgonzola">고르곤졸라 (+1000원)</option>
                 </select>
               </form>
-              <span className="pizzaOrder_price">{`${this.state.currentOrder.price_sum} 원`}</span>
+              <span className="pizzaOrder_price">{`${this.state.currentOrder.price} 원`}</span>
               <div className="button-box">
                 <Link to="/basketList_page">
                   <div className="button pizzaOrder_shopBasket-btn">
