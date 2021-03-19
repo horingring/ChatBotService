@@ -18,7 +18,7 @@ var getPizzaDataByIdx = (idx) => {
   return pizzaData;
 };
 
-// 0911, 경호, pizzaDatailInfo_page 컴포넌트 뼈대 완성
+// 0911, 경호, pizzaDetailInfo_page 컴포넌트 뼈대 완성
 class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
@@ -67,7 +67,6 @@ class pizzaDetailInfoPage extends Component {
         price_sum: 0,
       },
     };
-    this.getPizza_detailInfoByIdx = this.getPizza_detailInfoByIdx.bind(this);
     this.getPrice_sum = this.getPrice_sum.bind(this);
     this.getPizza_size_price = this.getPizza_size_price.bind(this);
     this.getDough_price = this.getDough_price.bind(this);
@@ -82,33 +81,14 @@ class pizzaDetailInfoPage extends Component {
     console.log("스크롤탑 실행됨");
   }
 
-  //p_idx를 이용해 '서버로부터' 피자 상세정보 받아오기 (*라고 가정)
-  getPizza_detailInfoByIdx() {
-    var pizza_list_data = this.state.pizza_list;
-    console.log(pizza_list_data);
-    var pizza_detailInfo;
-    // console.log(this.props.match.params.p_idx); -> params로 넘어온 정보는 문자타입(원래는 int 타입임)
-    // console.log(`${pizza_list_data[0].p_idx}`); -> 문자 타입으로 변환.
-    //p_idx이용하여 해당하는 피자의 데이터만 뽑아오기
-    //props로 넘어온 idx는 문자형, state에서 가져온 idx는 int형이므로, int형을 문자형으로 바꿔 if문의 조건식을 썼다.
-    for (var i = 0; i < pizza_list_data.length; i++) {
-      if (this.props.match.params.p_idx === `${pizza_list_data[i].p_idx}`) {
-        pizza_detailInfo = pizza_list_data[i];
-        console.log(pizza_detailInfo);
-        break;
-      }
-    }
-    return pizza_detailInfo;
-  }
-
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
   getPizza_size_price() {
     var pizza_size_price = 0;
     if (this.state.currentOrder.selected_size === "medium") {
-      pizza_size_price = this.getPizza_detailInfoByIdx().p_price.p_M_price;
+      pizza_size_price = this.state.currentPizza.p_price.p_M_price;
       return pizza_size_price;
     } else if (this.state.currentOrder.selected_size === "large") {
-      pizza_size_price = this.getPizza_detailInfoByIdx().p_price.p_L_price;
+      pizza_size_price = this.state.currentPizza.p_price.p_L_price;
       return pizza_size_price;
     } else {
       alert("피자 사이즈 가격 오류남");
@@ -151,7 +131,7 @@ class pizzaDetailInfoPage extends Component {
   }
 
   render() {
-    var pizza_detailInfo = this.getPizza_detailInfoByIdx();
+    var currentPizza = this.state.currentPizza;
     console.log("렌더링 완료");
     // 아래처럼 _price_sum를 총 금액에 ${_price_sum}로 주면, client 입장에서는 총 금액을 확인할 수 있지만, 내부적으로 state에 값이 입력되지 않는다.
     // 내가 원하는 것은 <select>의 option선택에 따라 state가 바뀌고, 그 state에 맞춰 금액이 client에서 나타나는 것이다.
@@ -162,12 +142,12 @@ class pizzaDetailInfoPage extends Component {
       <div className="pizzaDetailInfoPage Body-Container">
         <div className="pizzaOutlineNOrder-box">
           <div className="pizzaOutline-box">
-            <img src={pizza_detailInfo.p_img} alt={pizza_detailInfo.p_name} />
+            <img src={currentPizza.p_img} alt={currentPizza.p_name} />
             <div className="pizza_otherImg"></div>
           </div>
           <div className="pizzaOrder-box">
             <div className="pizzaOrder_form-box">
-              <h4>{pizza_detailInfo.p_name}</h4>
+              <h4>{currentPizza.p_name}</h4>
               <form action="/" className="pizzaOrder_form">
                 <label htmlFor="p_size">사이즈 : </label>
                 <select
@@ -191,8 +171,8 @@ class pizzaDetailInfoPage extends Component {
                     });
                   }.bind(this)}
                 >
-                  <option value="medium">{`M (미디엄, ${pizza_detailInfo.p_price.p_M_price} 원)`}</option>
-                  <option value="large">{`L (라지, ${pizza_detailInfo.p_price.p_L_price} 원)`}</option>
+                  <option value="medium">{`M (미디엄, ${currentPizza.p_price.p_M_price} 원)`}</option>
+                  <option value="large">{`L (라지, ${currentPizza.p_price.p_L_price} 원)`}</option>
                 </select>
                 <label htmlFor="p_dough">도우 : </label>
                 <select
@@ -253,7 +233,7 @@ class pizzaDetailInfoPage extends Component {
                 <Link
                   to={function () {
                     var { currentOrder } = this.state;
-                    return `/order_page/${pizza_detailInfo.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
+                    return `/order_page/${currentPizza.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
                   }.bind(this)}
                 >
                   <div className="button pizzaOrder_Immediate-btn">
@@ -263,7 +243,7 @@ class pizzaDetailInfoPage extends Component {
                 {/* <Link
                   to={function () {
                     var { currentOrder } = this.state;
-                    return `/order_page2/${pizza_detailInfo.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
+                    return `/order_page2/${currentPizza.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
                   }.bind(this)}
                 >
                   <div className="button pizzaOrder_Immediate-btn">
