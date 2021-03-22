@@ -130,14 +130,15 @@ class pizzaDetailInfoPage extends Component {
           className="otherPizza-Link"
           key={i}
         >
-          <div>
-            <p>{pizza.p_name}</p>
-            <img
-              src={pizza.p_img}
-              alt={pizza.p_name}
-              style={{ width: "50px", height: "auto" }}
-            />
+          <div className="otherPizza">
+            <img src={pizza.p_img} alt={pizza.p_name} />
           </div>
+          <p>
+            {
+              /*Pizza 문자 제거*/
+              pizza.p_name.substring(0, pizza.p_name.length - 6)
+            }
+          </p>
         </Link>
       );
       i += 1;
@@ -156,10 +157,13 @@ class pizzaDetailInfoPage extends Component {
         <div className="pizzaOutlineNOrder-box">
           <div className="pizzaOutline-box">
             <img src={currentPizza.p_img} alt={currentPizza.p_name} />
-            <div className="otherPizzaLink-box">
-              {/* test1 */}
-              {this.getOtherPizzaLink(this.state.currentPizza.p_idx)}
-              {/* test1 */}
+            <div className="otherPizza-container">
+              <h3>See Other Pizza!</h3>
+              <div className="otherPizzaLink-box">
+                {/* test1 */}
+                {this.getOtherPizzaLink(this.state.currentPizza.p_idx)}
+                {/* test1 */}
+              </div>
             </div>
           </div>
           <div className="pizzaOrder-box">
