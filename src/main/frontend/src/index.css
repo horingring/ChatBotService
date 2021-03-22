@@ -878,9 +878,53 @@ body,
   display: flex;
 }
 
-.pizzaOutline-box img {
+.pizzaOutline-box > img {
   width: 500px;
   height: 300px;
+}
+
+.otherPizza-container {
+  margin-top: 5vh;
+}
+.otherPizza-container h3 {
+  font-size: 20px;
+}
+
+.otherPizza-container .otherPizzaLink-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5vw 1.2vw;
+  width: 500px;
+  margin-top: 1vh;
+}
+.otherPizza-container .otherPizzaLink-box .otherPizza-Link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #343a40;
+}
+.otherPizza-container .otherPizzaLink-box .otherPizza-Link:hover {
+  text-decoration: none;
+}
+.otherPizza-container .otherPizzaLink-box .otherPizza-Link .otherPizza {
+  width: 100%;
+}
+.otherPizza-container .otherPizzaLink-box .otherPizza-Link .otherPizza img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: 0.5s transform;
+}
+.otherPizza-container
+  .otherPizzaLink-box
+  .otherPizza-Link
+  .otherPizza
+  img:hover {
+  transform: scale(1.1);
+}
+.otherPizza-container .otherPizzaLink-box .otherPizza-Link p {
+  margin: 0;
+  margin-top: 1vh;
 }
 
 .pizzaOrder-box {

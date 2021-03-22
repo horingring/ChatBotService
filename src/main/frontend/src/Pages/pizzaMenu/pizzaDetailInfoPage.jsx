@@ -17,14 +17,13 @@ var getPizzaDataByIdx = (idx) => {
 class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
-    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
     this.state = {
-      currentPizza: currentPizza,
+      currentPizza: {},
       currentOrder: {
         selected_size: "medium",
         selected_dough: "origin",
         selected_cheese: "mozzarella",
-        price: currentPizza.p_price.p_M_price,
+        price: 0,
       },
       total_price: 0,
     };
@@ -37,7 +36,36 @@ class pizzaDetailInfoPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     console.log("스크롤탑 실행됨");
+
+    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
+    this.setState({
+      currentPizza,
+      currentOrder: {
+        ...this.state.currentOrder,
+        price: currentPizza.p_price.p_M_price,
+      },
+    });
   }
+
+  //test1
+  // 210319, props변경(본 파일 내 Link 태그로 인한)시
+  // constructor 재실행 or 완전 리렌더링 시도
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      var newCurrentPizza = getPizzaDataByIdx(
+        Number(this.props.match.params.p_idx)
+      );
+
+      this.setState({
+        currentPizza: newCurrentPizza,
+        currentOrder: {
+          ...this.state.currentOrder,
+          price: newCurrentPizza.p_price.p_M_price,
+        },
+      });
+    }
+  }
+  //test1
 
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
   /*
@@ -86,7 +114,42 @@ class pizzaDetailInfoPage extends Component {
     return price_sum;
   }
 
+  // test1
+  getOtherPizzaLink(exceptIdx) {
+    var otherPizzaLink_list = [];
+    var i = 0;
+
+    for (var pizzaName in pizza_list) {
+      var pizza = pizza_list[pizzaName];
+      if (pizza.p_idx === this.state.currentPizza.p_idx) {
+        continue;
+      }
+      otherPizzaLink_list.push(
+        <Link
+          to={`/pizzaDetailInfoPage/${pizza.p_idx}`}
+          className="otherPizza-Link"
+          key={i}
+        >
+          <div className="otherPizza">
+            <img src={pizza.p_img} alt={pizza.p_name} />
+          </div>
+          <p>
+            {
+              /*Pizza 문자 제거*/
+              pizza.p_name.substring(0, pizza.p_name.length - 6)
+            }
+          </p>
+        </Link>
+      );
+      i += 1;
+    }
+
+    return otherPizzaLink_list;
+  }
+  // test1
+
   render() {
+    console.log("pizzaDetailInfoPage.jsx 렌더링됨");
     var currentPizza = this.state.currentPizza;
 
     return (
@@ -94,7 +157,14 @@ class pizzaDetailInfoPage extends Component {
         <div className="pizzaOutlineNOrder-box">
           <div className="pizzaOutline-box">
             <img src={currentPizza.p_img} alt={currentPizza.p_name} />
-            <div className="pizza_otherImg"></div>
+            <div className="otherPizza-container">
+              <h3>See Other Pizza!</h3>
+              <div className="otherPizzaLink-box">
+                {/* test1 */}
+                {this.getOtherPizzaLink(this.state.currentPizza.p_idx)}
+                {/* test1 */}
+              </div>
+            </div>
           </div>
           <div className="pizzaOrder-box">
             <div className="pizzaOrder_form-box">
@@ -133,8 +203,16 @@ class pizzaDetailInfoPage extends Component {
                     });
                   }.bind(this)}
                 >
-                  <option value="medium">{`M (미디엄, ${currentPizza.p_price.p_M_price} 원)`}</option>
-                  <option value="large">{`L (라지, ${currentPizza.p_price.p_L_price} 원)`}</option>
+                  <option value="medium">{`M (미디엄, ${
+                    Object.keys(currentPizza).length !== 0
+                      ? currentPizza.p_price.p_M_price
+                      : ""
+                  } 원)`}</option>
+                  <option value="large">{`L (라지, ${
+                    Object.keys(currentPizza).length !== 0
+                      ? currentPizza.p_price.p_L_price
+                      : ""
+                  } 원)`}</option>
                 </select>
                 <label htmlFor="p_dough">도우 : </label>
                 <select
