@@ -275,7 +275,7 @@ class pizzaDetailInfoPage extends Component {
               </form>
               <span className="pizzaOrder_price">{`${this.state.currentOrder.price} 원`}</span>
               <div className="button-box">
-                <Link to="/basketList_page">
+                <Link to="/basketList_page" className="button-Link">
                   <div className="button pizzaOrder_shopBasket-btn">
                     장바구니
                   </div>
@@ -285,6 +285,7 @@ class pizzaDetailInfoPage extends Component {
                     var { currentOrder } = this.state;
                     return `/order_page/${currentPizza.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
                   }.bind(this)}
+                  className="button-Link"
                 >
                   <div className="button pizzaOrder_Immediate-btn">
                     즉시주문

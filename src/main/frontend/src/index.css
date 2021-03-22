@@ -876,11 +876,17 @@ body,
 
 .pizzaOutlineNOrder-box {
   display: flex;
+  justify-content: space-between;
+}
+
+.pizzaOutline-box {
+  width: 55%;
 }
 
 .pizzaOutline-box > img {
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .otherPizza-container {
@@ -894,7 +900,7 @@ body,
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5vw 1.2vw;
-  width: 500px;
+  width: 100%;
   margin-top: 1vh;
 }
 .otherPizza-container .otherPizzaLink-box .otherPizza-Link {
@@ -928,18 +934,18 @@ body,
 }
 
 .pizzaOrder-box {
-  margin-left: 100px;
+  width: 30%;
 }
 
 .pizzaOrder_form-box h4 {
-  margin-bottom: 30px;
+  margin-bottom: 8vh;
   font-weight: 700;
 }
 
 .pizzaOrder_form select {
   display: block;
-  width: 300px;
-  margin-bottom: 30px;
+  width: 100%;
+  margin-bottom: 5vh;
 }
 
 .pizzaOrder_price {
@@ -947,12 +953,17 @@ body,
   text-align: right;
   font-weight: 700;
   font-size: 22px;
+  margin-top: 7vh;
 }
 
 .pizzaOrder_form-box .button-box {
-  margin-top: 30px;
+  margin-top: 10vh;
   display: flex;
   justify-content: space-around;
+}
+
+.pizzaOrder_form-box .button-box .button-Link:hover {
+  text-decoration: none;
 }
 
 .pizzaDetailInfoPage .button {
