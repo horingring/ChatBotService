@@ -17,14 +17,13 @@ var getPizzaDataByIdx = (idx) => {
 class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
-    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
     this.state = {
-      currentPizza: currentPizza,
+      currentPizza: {},
       currentOrder: {
         selected_size: "medium",
         selected_dough: "origin",
         selected_cheese: "mozzarella",
-        price: currentPizza.p_price.p_M_price,
+        price: 0,
       },
       total_price: 0,
     };
@@ -37,6 +36,15 @@ class pizzaDetailInfoPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     console.log("스크롤탑 실행됨");
+
+    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
+    this.setState({
+      currentPizza,
+      currentOrder: {
+        ...this.state.currentOrder,
+        price: currentPizza.p_price.p_M_price,
+      },
+    });
   }
 
   //test1
@@ -44,9 +52,17 @@ class pizzaDetailInfoPage extends Component {
   // constructor 재실행 or 완전 리렌더링 시도
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      console.log("hi");
-      this.forceUpdate();
-      console.log("hhi");
+      var newCurrentPizza = getPizzaDataByIdx(
+        Number(this.props.match.params.p_idx)
+      );
+
+      this.setState({
+        currentPizza: newCurrentPizza,
+        currentOrder: {
+          ...this.state.currentOrder,
+          price: newCurrentPizza.p_price.p_M_price,
+        },
+      });
     }
   }
   //test1
@@ -132,6 +148,7 @@ class pizzaDetailInfoPage extends Component {
   // test1
 
   render() {
+    console.log("pizzaDetailInfoPage.jsx 렌더링됨");
     var currentPizza = this.state.currentPizza;
 
     return (
@@ -182,8 +199,16 @@ class pizzaDetailInfoPage extends Component {
                     });
                   }.bind(this)}
                 >
-                  <option value="medium">{`M (미디엄, ${currentPizza.p_price.p_M_price} 원)`}</option>
-                  <option value="large">{`L (라지, ${currentPizza.p_price.p_L_price} 원)`}</option>
+                  <option value="medium">{`M (미디엄, ${
+                    Object.keys(currentPizza).length !== 0
+                      ? currentPizza.p_price.p_M_price
+                      : ""
+                  } 원)`}</option>
+                  <option value="large">{`L (라지, ${
+                    Object.keys(currentPizza).length !== 0
+                      ? currentPizza.p_price.p_L_price
+                      : ""
+                  } 원)`}</option>
                 </select>
                 <label htmlFor="p_dough">도우 : </label>
                 <select
