@@ -36,7 +36,7 @@ class PizzaMenuPage extends Component {
 
       return (
         <Link
-          to={`/pizzaDetailInfo_page/${pizzaData.p_idx}`}
+          to={`/pizzaDetailInfoPage/${pizzaData.p_idx}`}
           className="pizzaMenuPage_menu_link"
         >
           <div className="pizzaMenuPage_menu">
