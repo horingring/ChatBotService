@@ -39,6 +39,18 @@ class pizzaDetailInfoPage extends Component {
     console.log("스크롤탑 실행됨");
   }
 
+  //test1
+  // 210319, props변경(본 파일 내 Link 태그로 인한)시
+  // constructor 재실행 or 완전 리렌더링 시도
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      console.log("hi");
+      this.forceUpdate();
+      console.log("hhi");
+    }
+  }
+  //test1
+
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
   /*
     210319, 경호, getPrice_sum(state)
@@ -86,6 +98,39 @@ class pizzaDetailInfoPage extends Component {
     return price_sum;
   }
 
+  // test1
+  getOtherPizzaLink(exceptIdx) {
+    var otherPizzaLink_list = [];
+    var i = 0;
+
+    for (var pizzaName in pizza_list) {
+      var pizza = pizza_list[pizzaName];
+      if (pizza.p_idx === this.state.currentPizza.p_idx) {
+        continue;
+      }
+      otherPizzaLink_list.push(
+        <Link
+          to={`/pizzaDetailInfoPage/${pizza.p_idx}`}
+          className="otherPizza-Link"
+          key={i}
+        >
+          <div>
+            <p>{pizza.p_name}</p>
+            <img
+              src={pizza.p_img}
+              alt={pizza.p_name}
+              style={{ width: "50px", height: "auto" }}
+            />
+          </div>
+        </Link>
+      );
+      i += 1;
+    }
+
+    return otherPizzaLink_list;
+  }
+  // test1
+
   render() {
     var currentPizza = this.state.currentPizza;
 
@@ -94,7 +139,11 @@ class pizzaDetailInfoPage extends Component {
         <div className="pizzaOutlineNOrder-box">
           <div className="pizzaOutline-box">
             <img src={currentPizza.p_img} alt={currentPizza.p_name} />
-            <div className="pizza_otherImg"></div>
+            <div className="otherPizzaLink-box">
+              {/* test1 */}
+              {this.getOtherPizzaLink(this.state.currentPizza.p_idx)}
+              {/* test1 */}
+            </div>
           </div>
           <div className="pizzaOrder-box">
             <div className="pizzaOrder_form-box">
