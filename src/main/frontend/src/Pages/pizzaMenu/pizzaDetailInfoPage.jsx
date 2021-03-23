@@ -18,11 +18,13 @@ class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPizza: {},
       currentOrder: {
-        selected_size: "medium",
-        selected_dough: "origin",
-        selected_cheese: "mozzarella",
+        currentPizza: {},
+        option: {
+          selected_size: "",
+          selected_dough: "",
+          selected_cheese: "",
+        },
         price: 0,
       },
       total_price: 0,
@@ -37,17 +39,22 @@ class pizzaDetailInfoPage extends Component {
     window.scrollTo(0, 0);
     console.log("스크롤탑 실행됨");
 
-    var currentPizza = getPizzaDataByIdx(Number(this.props.match.params.p_idx));
+    var _currentPizza = getPizzaDataByIdx(
+      Number(this.props.match.params.p_idx)
+    );
     this.setState({
-      currentPizza,
       currentOrder: {
-        ...this.state.currentOrder,
-        price: currentPizza.p_price.p_M_price,
+        currentPizza: _currentPizza,
+        option: {
+          selected_size: "medium",
+          selected_dough: "origin",
+          selected_cheese: "mozzarella",
+        },
+        price: _currentPizza.p_price.p_M_price,
       },
     });
   }
 
-  //test1
   // 210319, props변경(본 파일 내 Link 태그로 인한)시
   // constructor 재실행 or 완전 리렌더링 시도
   componentDidUpdate(prevProps) {
@@ -57,15 +64,19 @@ class pizzaDetailInfoPage extends Component {
       );
 
       this.setState({
-        currentPizza: newCurrentPizza,
         currentOrder: {
           ...this.state.currentOrder,
+          currentPizza: newCurrentPizza,
+          option: {
+            selected_size: "medium",
+            selected_dough: "origin",
+            selected_cheese: "mozzarella",
+          },
           price: newCurrentPizza.p_price.p_M_price,
         },
       });
     }
   }
-  //test1
 
   //0924, 경호, 옵션 선택에 따른 price_sum 변경 완료!
   /*
@@ -75,33 +86,33 @@ class pizzaDetailInfoPage extends Component {
   */
   getPizza_size_price(state) {
     var pizza_size_price = 0;
-    if (state.currentOrder.selected_size === "medium") {
-      pizza_size_price = state.currentPizza.p_price.p_M_price;
+    if (state.currentOrder.option.selected_size === "medium") {
+      pizza_size_price = state.currentOrder.currentPizza.p_price.p_M_price;
       return pizza_size_price;
-    } else if (state.currentOrder.selected_size === "large") {
-      pizza_size_price = state.currentPizza.p_price.p_L_price;
+    } else if (state.currentOrder.option.selected_size === "large") {
+      pizza_size_price = state.currentOrder.currentPizza.p_price.p_L_price;
       return pizza_size_price;
     }
   }
 
   getDough_price(state) {
     var dough_price = 0;
-    if (state.currentOrder.selected_dough === "origin") {
+    if (state.currentOrder.option.selected_dough === "origin") {
       return dough_price;
-    } else if (state.currentOrder.selected_dough === "thin") {
+    } else if (state.currentOrder.option.selected_dough === "thin") {
       return dough_price + 1000;
-    } else if (state.currentOrder.selected_dough === "napoli") {
+    } else if (state.currentOrder.option.selected_dough === "napoli") {
       return dough_price + 1500;
     }
   }
 
   getCheese_price(state) {
     var cheese_price = 0;
-    if (state.currentOrder.selected_cheese === "mozzarella") {
+    if (state.currentOrder.option.selected_cheese === "mozzarella") {
       return cheese_price;
-    } else if (state.currentOrder.selected_cheese === "cheddar") {
+    } else if (state.currentOrder.option.selected_cheese === "cheddar") {
       return cheese_price + 500;
-    } else if (state.currentOrder.selected_cheese === "gorgonzola") {
+    } else if (state.currentOrder.option.selected_cheese === "gorgonzola") {
       return cheese_price + 1000;
     }
   }
@@ -114,14 +125,13 @@ class pizzaDetailInfoPage extends Component {
     return price_sum;
   }
 
-  // test1
   getOtherPizzaLink(exceptIdx) {
     var otherPizzaLink_list = [];
     var i = 0;
 
     for (var pizzaName in pizza_list) {
       var pizza = pizza_list[pizzaName];
-      if (pizza.p_idx === this.state.currentPizza.p_idx) {
+      if (pizza.p_idx === exceptIdx) {
         continue;
       }
       otherPizzaLink_list.push(
@@ -146,11 +156,10 @@ class pizzaDetailInfoPage extends Component {
 
     return otherPizzaLink_list;
   }
-  // test1
 
   render() {
     console.log("pizzaDetailInfoPage.jsx 렌더링됨");
-    var currentPizza = this.state.currentPizza;
+    var currentPizza = this.state.currentOrder.currentPizza;
 
     return (
       <div className="pizzaDetailInfoPage Body-Container">
@@ -160,9 +169,9 @@ class pizzaDetailInfoPage extends Component {
             <div className="otherPizza-container">
               <h3>See Other Pizza!</h3>
               <div className="otherPizzaLink-box">
-                {/* test1 */}
-                {this.getOtherPizzaLink(this.state.currentPizza.p_idx)}
-                {/* test1 */}
+                {this.getOtherPizzaLink(
+                  this.state.currentOrder.currentPizza.p_idx
+                )}
               </div>
             </div>
           </div>
@@ -174,7 +183,7 @@ class pizzaDetailInfoPage extends Component {
                 <select
                   name="p_size"
                   id="p_size"
-                  value={this.state.currentOrder.selected_size}
+                  value={this.state.currentOrder.option.selected_size}
                   onChange={function (e) {
                     /*
                       210319, 경호
@@ -182,11 +191,15 @@ class pizzaDetailInfoPage extends Component {
                       state에 적용하는 로직 
                     */
                     var { currentOrder } = this.state;
+                    var { option } = this.state.currentOrder;
                     // (1) 선택한 옵션 state에 적용
                     this.setState({
                       currentOrder: {
                         ...currentOrder,
-                        selected_size: e.target.value,
+                        option: {
+                          ...option,
+                          selected_size: e.target.value,
+                        },
                       },
                     });
                     // (2) 변경된 옵션 state를 받아
@@ -218,13 +231,17 @@ class pizzaDetailInfoPage extends Component {
                 <select
                   name="p_dough"
                   id="p_dough"
-                  value={this.state.currentOrder.selected_dough}
+                  value={this.state.currentOrder.option.selected_dough}
                   onChange={function (e) {
                     var { currentOrder } = this.state;
+                    var { option } = this.state.currentOrder;
                     this.setState({
                       currentOrder: {
                         ...currentOrder,
-                        selected_dough: e.target.value,
+                        option: {
+                          ...option,
+                          selected_dough: e.target.value,
+                        },
                       },
                     });
                     this.setState((prevState) => {
@@ -247,13 +264,17 @@ class pizzaDetailInfoPage extends Component {
                 <select
                   name="p_cheese"
                   id="p_cheese"
-                  value={this.state.currentOrder.selected_cheese}
+                  value={this.state.currentOrder.option.selected_cheese}
                   onChange={function (e) {
                     var { currentOrder } = this.state;
+                    var { option } = this.state.currentOrder;
                     this.setState({
                       currentOrder: {
                         ...currentOrder,
-                        selected_cheese: e.target.value,
+                        option: {
+                          ...option,
+                          selected_cheese: e.target.value,
+                        },
                       },
                     });
                     this.setState((prevState) => {
@@ -283,7 +304,7 @@ class pizzaDetailInfoPage extends Component {
                 <Link
                   to={function () {
                     var { currentOrder } = this.state;
-                    return `/order_page/${currentPizza.p_idx}/${currentOrder.selected_size}/${currentOrder.selected_dough}/${currentOrder.selected_cheese}`;
+                    return `/order_page/${currentPizza.p_idx}/${currentOrder.option.selected_size}/${currentOrder.option.selected_dough}/${currentOrder.option.selected_cheese}`;
                   }.bind(this)}
                   className="button-Link"
                 >
