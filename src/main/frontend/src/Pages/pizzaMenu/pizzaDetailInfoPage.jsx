@@ -18,15 +18,19 @@ class pizzaDetailInfoPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentOrder: {
+      currentSelect: {
         currentPizza: {},
         option: {
           selected_size: "",
           selected_dough: "",
           selected_cheese: "",
         },
+        selectedNumber: 0,
         price: 0,
       },
+      currentOrder: [
+        /* currentSelect가 들어갈 자리 */
+      ],
       total_price: 0,
     };
     this.getPrice_sum = this.getPrice_sum.bind(this);
@@ -43,14 +47,9 @@ class pizzaDetailInfoPage extends Component {
       Number(this.props.match.params.p_idx)
     );
     this.setState({
-      currentOrder: {
+      currentSelect: {
+        ...this.state.currentSelect,
         currentPizza: _currentPizza,
-        option: {
-          selected_size: "medium",
-          selected_dough: "origin",
-          selected_cheese: "mozzarella",
-        },
-        price: _currentPizza.p_price.p_M_price,
       },
     });
   }
@@ -64,15 +63,15 @@ class pizzaDetailInfoPage extends Component {
       );
 
       this.setState({
-        currentOrder: {
-          ...this.state.currentOrder,
+        currentSelect: {
+          ...this.state.currentSelect,
           currentPizza: newCurrentPizza,
           option: {
-            selected_size: "medium",
-            selected_dough: "origin",
-            selected_cheese: "mozzarella",
+            selected_size: "",
+            selected_dough: "",
+            selected_cheese: "",
           },
-          price: newCurrentPizza.p_price.p_M_price,
+          price: 0,
         },
       });
     }
@@ -86,34 +85,40 @@ class pizzaDetailInfoPage extends Component {
   */
   getPizza_size_price(state) {
     var pizza_size_price = 0;
-    if (state.currentOrder.option.selected_size === "medium") {
-      pizza_size_price = state.currentOrder.currentPizza.p_price.p_M_price;
+    if (state.currentSelect.option.selected_size === "medium") {
+      pizza_size_price = state.currentSelect.currentPizza.p_price.p_M_price;
       return pizza_size_price;
-    } else if (state.currentOrder.option.selected_size === "large") {
-      pizza_size_price = state.currentOrder.currentPizza.p_price.p_L_price;
+    } else if (state.currentSelect.option.selected_size === "large") {
+      pizza_size_price = state.currentSelect.currentPizza.p_price.p_L_price;
+      return pizza_size_price;
+    } else {
       return pizza_size_price;
     }
   }
 
   getDough_price(state) {
     var dough_price = 0;
-    if (state.currentOrder.option.selected_dough === "origin") {
+    if (state.currentSelect.option.selected_dough === "origin") {
       return dough_price;
-    } else if (state.currentOrder.option.selected_dough === "thin") {
+    } else if (state.currentSelect.option.selected_dough === "thin") {
       return dough_price + 1000;
-    } else if (state.currentOrder.option.selected_dough === "napoli") {
+    } else if (state.currentSelect.option.selected_dough === "napoli") {
       return dough_price + 1500;
+    } else {
+      return dough_price;
     }
   }
 
   getCheese_price(state) {
     var cheese_price = 0;
-    if (state.currentOrder.option.selected_cheese === "mozzarella") {
+    if (state.currentSelect.option.selected_cheese === "mozzarella") {
       return cheese_price;
-    } else if (state.currentOrder.option.selected_cheese === "cheddar") {
+    } else if (state.currentSelect.option.selected_cheese === "cheddar") {
       return cheese_price + 500;
-    } else if (state.currentOrder.option.selected_cheese === "gorgonzola") {
+    } else if (state.currentSelect.option.selected_cheese === "gorgonzola") {
       return cheese_price + 1000;
+    } else {
+      return cheese_price;
     }
   }
 
@@ -157,9 +162,38 @@ class pizzaDetailInfoPage extends Component {
     return otherPizzaLink_list;
   }
 
+  //test2
+  // getCurrentOrderList() {
+  //   var currentOrderList = [];
+  //   var { currentOrder } = this.state;
+  //   for (var i = 0; i < currentOrder.length; i++) {
+  //     var currentOrder = currentOrder[i];
+  //     currentOrderList.push(
+  //       <li>
+  //         <div>
+  //           <div>
+  //             {`${currentOrder.currentPizza.p_name}(${currentOrder.option.selected_size})/${currentOrder.option.selected_dough}/${currentOrder.option.selected_dough}`}
+  //           </div>
+  //           <div>
+  //             <span>수량</span>
+  //             <div>
+  //               <div>-</div>
+  //               <div>{currentOrder.selectedNumber}</div>
+  //               <div>+</div>
+  //             </div>
+  //             <span>{`${currentOrder.price} 원`}</span>
+  //           </div>
+  //         </div>
+  //       </li>
+  //     );
+  //   }
+  //   return currentOrderList;
+  // }
+  //test2
+
   render() {
     console.log("pizzaDetailInfoPage.jsx 렌더링됨");
-    var currentPizza = this.state.currentOrder.currentPizza;
+    var currentPizza = this.state.currentSelect.currentPizza;
 
     return (
       <div className="pizzaDetailInfoPage Body-Container">
@@ -170,7 +204,7 @@ class pizzaDetailInfoPage extends Component {
               <h3>See Other Pizza!</h3>
               <div className="otherPizzaLink-box">
                 {this.getOtherPizzaLink(
-                  this.state.currentOrder.currentPizza.p_idx
+                  this.state.currentSelect.currentPizza.p_idx
                 )}
               </div>
             </div>
@@ -183,19 +217,19 @@ class pizzaDetailInfoPage extends Component {
                 <select
                   name="p_size"
                   id="p_size"
-                  value={this.state.currentOrder.option.selected_size}
+                  value={this.state.currentSelect.option.selected_size}
                   onChange={function (e) {
                     /*
                       210319, 경호
                       : 선택한 옵션, 그에 따른 총 금액을 
                       state에 적용하는 로직 
                     */
-                    var { currentOrder } = this.state;
-                    var { option } = this.state.currentOrder;
+                    var { currentSelect } = this.state;
+                    var { option } = this.state.currentSelect;
                     // (1) 선택한 옵션 state에 적용
                     this.setState({
-                      currentOrder: {
-                        ...currentOrder,
+                      currentSelect: {
+                        ...currentSelect,
                         option: {
                           ...option,
                           selected_size: e.target.value,
@@ -206,16 +240,19 @@ class pizzaDetailInfoPage extends Component {
                     // 총 금액 계산하여 다시 state에 적용
                     this.setState((prevState) => {
                       var _price = this.getPrice_sum(prevState);
-                      var { currentOrder } = prevState;
+                      var { currentSelect } = prevState;
                       return {
-                        currentOrder: {
-                          ...currentOrder,
+                        currentSelect: {
+                          ...currentSelect,
                           price: _price,
                         },
                       };
                     });
                   }.bind(this)}
                 >
+                  <option value="" disabled hidden>
+                    == 사이즈 선택 ==
+                  </option>
                   <option value="medium">{`M (미디엄, ${
                     Object.keys(currentPizza).length !== 0
                       ? currentPizza.p_price.p_M_price
@@ -231,13 +268,13 @@ class pizzaDetailInfoPage extends Component {
                 <select
                   name="p_dough"
                   id="p_dough"
-                  value={this.state.currentOrder.option.selected_dough}
+                  value={this.state.currentSelect.option.selected_dough}
                   onChange={function (e) {
-                    var { currentOrder } = this.state;
-                    var { option } = this.state.currentOrder;
+                    var { currentSelect } = this.state;
+                    var { option } = this.state.currentSelect;
                     this.setState({
-                      currentOrder: {
-                        ...currentOrder,
+                      currentSelect: {
+                        ...currentSelect,
                         option: {
                           ...option,
                           selected_dough: e.target.value,
@@ -246,31 +283,40 @@ class pizzaDetailInfoPage extends Component {
                     });
                     this.setState((prevState) => {
                       var _price = this.getPrice_sum(prevState);
-                      var { currentOrder } = prevState;
+                      var { currentSelect } = prevState;
                       return {
-                        currentOrder: {
-                          ...currentOrder,
+                        currentSelect: {
+                          ...currentSelect,
                           price: _price,
                         },
                       };
                     });
                   }.bind(this)}
                 >
-                  <option value="origin">오리지널 도우 (기본)</option>
-                  <option value="thin">씬 도우 (+1000원)</option>
-                  <option value="napoli">나폴리 도우 (+1500원)</option>
+                  <option value="" disabled hidden>
+                    == 도우 선택 ==
+                  </option>
+                  {this.state.currentSelect.option.selected_size === "" ? (
+                    <></>
+                  ) : (
+                    <>
+                      <option value="origin">오리지널 도우 (+0원)</option>
+                      <option value="thin">씬 도우 (+1000원)</option>
+                      <option value="napoli">나폴리 도우 (+1500원)</option>
+                    </>
+                  )}
                 </select>
                 <label htmlFor="p_cheese">치즈 : </label>
                 <select
                   name="p_cheese"
                   id="p_cheese"
-                  value={this.state.currentOrder.option.selected_cheese}
+                  value={this.state.currentSelect.option.selected_cheese}
                   onChange={function (e) {
-                    var { currentOrder } = this.state;
-                    var { option } = this.state.currentOrder;
+                    var { currentSelect } = this.state;
+                    var { option } = this.state.currentSelect;
                     this.setState({
-                      currentOrder: {
-                        ...currentOrder,
+                      currentSelect: {
+                        ...currentSelect,
                         option: {
                           ...option,
                           selected_cheese: e.target.value,
@@ -279,22 +325,56 @@ class pizzaDetailInfoPage extends Component {
                     });
                     this.setState((prevState) => {
                       var _price = this.getPrice_sum(prevState);
-                      var { currentOrder } = prevState;
+                      var { currentSelect } = prevState;
                       return {
-                        currentOrder: {
-                          ...currentOrder,
+                        currentSelect: {
+                          ...currentSelect,
                           price: _price,
+                        },
+                      };
+                    });
+                    this.setState((prevState) => {
+                      var { currentOrder, currentSelect } = prevState;
+                      return {
+                        currentOrder: [...currentOrder, currentSelect],
+                        currentSelect: {
+                          ...currentSelect,
+                          option: {
+                            selected_size: "",
+                            selected_dough: "",
+                            selected_cheese: "",
+                          },
+                          price: 0,
                         },
                       };
                     });
                   }.bind(this)}
                 >
-                  <option value="mozzarella">모짜렐라 (기본)</option>
-                  <option value="cheddar">체다 (+500원)</option>
-                  <option value="gorgonzola">고르곤졸라 (+1000원)</option>
+                  <option value="" disabled hidden>
+                    == 치즈 선택 ==
+                  </option>
+                  {this.state.currentSelect.option.selected_dough === "" ? (
+                    <></>
+                  ) : (
+                    <>
+                      <option value="mozzarella">모짜렐라 (+0원)</option>
+                      <option value="cheddar">체다 (+500원)</option>
+                      <option value="gorgonzola">고르곤졸라 (+1000원)</option>
+                    </>
+                  )}
                 </select>
               </form>
-              <span className="pizzaOrder_price">{`${this.state.currentOrder.price} 원`}</span>
+
+              {/* test2 */}
+              {/* currentOrderList */}
+              {/* <div>
+                <ul>
+                  {getCurrentOrderList()}
+                </ul>
+              </div> */}
+              {/* test2 */}
+
+              <span className="pizzaOrder_price">{`${this.state.currentSelect.price} 원`}</span>
               <div className="button-box">
                 <Link to="/basketList_page" className="button-Link">
                   <div className="button pizzaOrder_shopBasket-btn">
@@ -303,8 +383,8 @@ class pizzaDetailInfoPage extends Component {
                 </Link>
                 <Link
                   to={function () {
-                    var { currentOrder } = this.state;
-                    return `/order_page/${currentPizza.p_idx}/${currentOrder.option.selected_size}/${currentOrder.option.selected_dough}/${currentOrder.option.selected_cheese}`;
+                    var { currentSelect } = this.state;
+                    return `/order_page/${currentSelect.currentPizza.p_idx}/${currentSelect.option.selected_size}/${currentSelect.option.selected_dough}/${currentSelect.option.selected_cheese}`;
                   }.bind(this)}
                   className="button-Link"
                 >
