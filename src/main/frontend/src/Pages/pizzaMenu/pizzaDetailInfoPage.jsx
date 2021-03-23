@@ -71,8 +71,10 @@ class pizzaDetailInfoPage extends Component {
             selected_dough: "",
             selected_cheese: "",
           },
+          selectedNumber: 0,
           price: 0,
         },
+        currentOrder: [],
       });
     }
   }
@@ -163,32 +165,67 @@ class pizzaDetailInfoPage extends Component {
   }
 
   //test2
-  // getCurrentOrderList() {
-  //   var currentOrderList = [];
-  //   var { currentOrder } = this.state;
-  //   for (var i = 0; i < currentOrder.length; i++) {
-  //     var currentOrder = currentOrder[i];
-  //     currentOrderList.push(
-  //       <li>
-  //         <div>
-  //           <div>
-  //             {`${currentOrder.currentPizza.p_name}(${currentOrder.option.selected_size})/${currentOrder.option.selected_dough}/${currentOrder.option.selected_dough}`}
-  //           </div>
-  //           <div>
-  //             <span>수량</span>
-  //             <div>
-  //               <div>-</div>
-  //               <div>{currentOrder.selectedNumber}</div>
-  //               <div>+</div>
-  //             </div>
-  //             <span>{`${currentOrder.price} 원`}</span>
-  //           </div>
-  //         </div>
-  //       </li>
-  //     );
-  //   }
-  //   return currentOrderList;
-  // }
+  getCurrentOrderList() {
+    var currentOrderList = [];
+    var { currentOrder } = this.state;
+    for (var i = 0; i < currentOrder.length; i++) {
+      var currentOrderByIdx = currentOrder[i];
+      currentOrderList.push(
+        <li key={i}>
+          <div className="selectedOption-box">
+            <div>
+              <span>선택옵션</span>
+              {`${currentOrderByIdx.option.selected_size} / ${currentOrderByIdx.option.selected_dough} / ${currentOrderByIdx.option.selected_cheese}`}
+            </div>
+            <div>
+              <div className="addNumber-box">
+                <span>수량</span>
+                <div
+                  className="addNumber addNumber_minus"
+                  data-index={i}
+                  onClick={function (e) {
+                    var index = Number(e.target.dataset.index);
+                    var _currentOrder = this.state.currentOrder.slice();
+                    if (_currentOrder[index].selectedNumber > 1) {
+                      _currentOrder[index].selectedNumber -= 1;
+                      this.setState({
+                        currentOrder: _currentOrder,
+                      });
+                    } else {
+                      alert("1개 이상부터 주문하실 수 있습니다.");
+                    }
+                  }.bind(this)}
+                >
+                  -
+                </div>
+                <div className="addNumber addNumber_number">
+                  {currentOrderByIdx.selectedNumber}
+                </div>
+                <div
+                  className="addNumber addNumber_plus"
+                  data-index={i}
+                  onClick={function (e) {
+                    var index = Number(e.target.dataset.index);
+                    var _currentOrder = this.state.currentOrder.slice();
+                    _currentOrder[index].selectedNumber += 1;
+                    this.setState({
+                      currentOrder: _currentOrder,
+                    });
+                  }.bind(this)}
+                >
+                  +
+                </div>
+              </div>
+              <span className="selectedOption_price">{`${
+                currentOrderByIdx.price * currentOrderByIdx.selectedNumber
+              } 원`}</span>
+            </div>
+          </div>
+        </li>
+      );
+    }
+    return currentOrderList;
+  }
   //test2
 
   render() {
@@ -329,6 +366,7 @@ class pizzaDetailInfoPage extends Component {
                       return {
                         currentSelect: {
                           ...currentSelect,
+                          selectedNumber: 1,
                           price: _price,
                         },
                       };
@@ -344,6 +382,7 @@ class pizzaDetailInfoPage extends Component {
                             selected_dough: "",
                             selected_cheese: "",
                           },
+                          selectedNumber: 0,
                           price: 0,
                         },
                       };
@@ -367,11 +406,9 @@ class pizzaDetailInfoPage extends Component {
 
               {/* test2 */}
               {/* currentOrderList */}
-              {/* <div>
-                <ul>
-                  {getCurrentOrderList()}
-                </ul>
-              </div> */}
+              <div className="selectedOption-container">
+                <ul>{this.getCurrentOrderList()}</ul>
+              </div>
               {/* test2 */}
 
               <span className="pizzaOrder_price">{`${this.state.currentSelect.price} 원`}</span>
